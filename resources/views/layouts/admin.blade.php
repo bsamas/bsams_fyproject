@@ -217,7 +217,7 @@ conts
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+              <i class="fa fa-building" aria-hidden="true" style="font-size: 30px"></i>
               <p>
                 Department
                 <i class="fas fa-angle-left right"></i>
@@ -244,7 +244,7 @@ conts
 
        <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon far fa-plus-square"></i>
+           <i class="fa fa-user" aria-hidden="true" style="font-size: 30px"></i>
               <p>
                 Staff
                 <i class="fas fa-angle-left right"></i>
@@ -271,7 +271,7 @@ conts
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon far fa-plus-square"></i>
+              <i class="fa fa-suitcase" aria-hidden="true" style="font-size: 30px"></i>
               <p>
             Programme
                 <i class="fas fa-angle-left right"></i>
@@ -298,7 +298,7 @@ conts
 
        <li class="nav-item has-treeview">
            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-plus-square"></i>
+             <i class="fa fa-book" aria-hidden="true" style="font-size: 30px"></i>
               <p>
                  Course
                 <i class="fas fa-angle-left right"></i>
@@ -325,7 +325,7 @@ conts
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
+             <i class="fa fa-graduation-cap" aria-hidden="true" style="font-size: 30px"></i>
               <p>
                 Student
                 <i class="right fas fa-angle-left"></i>
@@ -351,7 +351,7 @@ conts
           {{--  //attedance  --}}
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+              <i class="fas fa-tree" style="font-size: 30px"></i>
               <p>
                Attendance
                 <i class="fas fa-angle-left right"></i>
@@ -378,7 +378,7 @@ conts
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
+              <i class="nav-icon fas fa-edit" style="font-size: 30px"></i>
               <p>
                 Attendance Report
                 <i class="fas fa-angle-left right"></i>
@@ -398,7 +398,7 @@ conts
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
+            <i class="fa fa-bell" aria-hidden="true" style="font-size: 30px"></i>
               <p>
                 Notification
                 <i class="fas fa-angle-left right"></i>

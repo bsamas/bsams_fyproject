@@ -45,7 +45,7 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 60px;
             }
 
             .links > a {
@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                   Welcome To Bsams
+                   Welcome to Bsams
                 </div>
 
                 {{-- <div class="links">
