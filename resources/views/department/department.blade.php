@@ -26,10 +26,11 @@
            <input type="submit" class="btn btn-primary" style="width: 25%" value="Submit">
               <input type="reset" class="btn btn-secondary" style="width: 25%" value="Reset">
              </div>
-          </div
-       </form>
+
 </div>
+</form>
  </div>
+</div>
 </div>
 </div>
 </div>

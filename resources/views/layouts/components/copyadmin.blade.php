@@ -93,17 +93,160 @@ conts
           </li>
 
 
-          <li class="nav-item active" >
-            <a href="component" class="nav-link" style="color: #ffffffff">
-               <i class="nav-icon fas fa-edit" style="font-size: 30px"></i>
+          <li class="nav-item">
+            <a href="registereddepartment" class="nav-link">
+              <i class="fa fa-building" aria-hidden="true" style="font-size: 30px"></i>
               <p>
-               Registration
+                Department
+                {{-- <i class="fas fa-angle-left right"></i> --}}
               </p>
             </a>
+           <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="department" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add department </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="registereddepartment" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View department</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+{{--  // staff reg#  --}}
+
+       <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+           <i class="fa fa-user" aria-hidden="true" style="font-size: 30px"></i>
+              <p>
+                Staff
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="staff" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Staff</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="showstaff" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Registered Staff</p>
+                </a>
+              </li>
+            </ul>
+        </li>
+
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="fa fa-suitcase" aria-hidden="true" style="font-size: 30px"></i>
+              <p>
+            Programme
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="programme" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Programme</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="viewprogramme" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Registered Programme</p>
+                </a>
+              </li>
+            </ul>
+        </li>
+
+{{--  // drop for  course reg#  --}}
+
+
+       <li class="nav-item has-treeview">
+           <a href="#" class="nav-link">
+             <i class="fa fa-book" aria-hidden="true" style="font-size: 30px"></i>
+              <p>
+                 Course
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+          <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="course" class="nav-link">
+                  <i class="far fa-circrle nav-icon"></i>
+                  <p>Register Course</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="viewcourse" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Course</p>
+                   </a>
+                </li>
+            </ul>
+         </li>
+
+
+{{--  //student reg#  --}}
+
+       <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+             <i class="fa fa-graduation-cap" aria-hidden="true" style="font-size: 30px"></i>
+              <p>
+                Student
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="student" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Register Student</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="viewstudent" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Registered Student</p>
+                </a>
+              </li>
+            </ul>
           </li>
 
 
-
+          {{--  //attedance  --}}
+        <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="fas fa-tree" style="font-size: 30px"></i>
+              <p>
+               Attendance
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/UI/general.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Take attendance</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/UI/icons.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View attendance</p>
+                </a>
+              </li>
+            </ul>
+            </li>
 
 {{--  <!--attendance report-->  --}}
 
@@ -128,7 +271,7 @@ conts
 
 
 
-          {{--  <li class="nav-item has-treeview">
+           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
             <i class="fa fa-bell" aria-hidden="true" style="font-size: 30px"></i>
               <p>
@@ -150,7 +293,7 @@ conts
                 </a>
               </li>
             </ul>
-          </li>    --}}
+          </li>
 
 
 

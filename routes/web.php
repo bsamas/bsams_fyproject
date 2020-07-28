@@ -59,17 +59,27 @@ Route::get('/ course', function() {
 
 });
 
-Route::post('/postCourse', 'CourseController@postCourse');
+Route::post('/postcourse', 'CourseController@postCourse');
 Route::get('/viewcourse', 'CourseController@getAllCourses')->name('viewcourse');
-
+Route::post('/edit_course/{id}', 'CourseController@edit');
+Route::get('/delete_course/{id}', 'CourseController@delete');
 
 
 Route::get('/ department', function() {
     return view('department.department');
+
 });
 
 Route::post('/postdepartment', 'DepartmentController@postDepartment');
 Route::get('/registereddepartment', 'DepartmentController@getAllDepartments')->name('registereddepartment');
+Route::post('/edit_department/{id}', 'DepartmentController@edit');
+Route::get('/delete_department/{id}', 'DepartmentController@delete');
+
+
+
+Route::get('/ component', function() {
+    return view('component.registration');
+});
 
 
 Route::get('/programme', function() {
@@ -78,6 +88,8 @@ Route::get('/programme', function() {
 
  Route::post('/postprogramme','ProgrammeController@postProgramme');
  Route::get('viewprogramme', 'ProgrammeController@getAllProgrammes')->name('viewprogramme');
+ Route::post('/edit_programme/{id}', 'ProgrammeController@edit');
+Route::get('/delete_programme/{id}', 'ProgrammeController@delete');
 
 
 

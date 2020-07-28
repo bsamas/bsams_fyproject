@@ -19,20 +19,26 @@
 
 @endif
 
-<div class="container">
-<div class="card">
+ <div class="container">
+<div class="wrapper-editor">
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+
+
             {{-- ///== the add pop up button====// --}}
                 <div class="col-md-3 p-3">
                     <button class="btn btn-primary"  data-toggle="modal" data-target="#add">Add New</button>
                 </div>
-                <table id="data" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
 
 
     <thead>
        <tr>
         <th class="th-sm">Id
         </th>
-        <th class="th-sm">programme Name
+        <th class="th-sm">Department Name
         </th>
         <th class="th-sm">Action
         </th>
@@ -41,22 +47,23 @@
 
 
 
-    {{-- //=====check the list of programme if its greater than 0 then can be displayed.====// --}}
-@if(count($programmes) > 0)
-@foreach ($programmes as $programme)
+    {{-- //=====check the list of department if its greater than 0 then can be displayed.====// --}}
+@if(count($departments) > 0)
+@foreach ($departments as $department)
 <tr>
-<td>{{ ($programme->id) }}</td>
-<td>{{ $programme->programme_name}}</td>
+<td>{{ ($department->id) }}</td>
+<td>{{ $department->department_name}}</td>
 <td>
-    <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ ($programme->programme_name) }}">Edit</a>
-    <a href="#" type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{ ($programme->programme_name) }}1">Delete</a>
+    <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ ($department->department_name) }}">Edit</a>
+    <a href="#" type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{ ($department->department_name) }}1">Delete</a>
 
 </td>
 
 
 
+
 {{-- //===Modal for edit button pop up===// --}}
-<div class="modal fade" id="{{ ($programme->programme_name) }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="{{ ($department->department_name) }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -65,12 +72,12 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action='{{url("/edit_programme/{$programme->id}")}}' method="POST">
+      <form action='{{url("/edit_department/{$department->id}")}}' method="POST">
         @csrf
       <div class="modal-body">
             <div class="form-group">
-                <label for="formGroupInput">programme Name</label>
-                <input type="text" name="programme_name" class="form-control" id="formGroupInput"  value="<?php echo $programme->programme_name; ?>">
+                <label for="formGroupExampleInput">Department Name</label>
+                <input type="text" name="department_name" class="form-control" id="formGroupExampleInput" value=<?php echo $department->department_name; ?>>
             </div>
 
       </div>
@@ -86,7 +93,7 @@
 
 
 {{-- //====delete modal pop up button===// --}}
-<div class="modal fade" id="{{ ($programme->programme_name) }}1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="{{ ($department->department_name) }}1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -100,14 +107,14 @@
       {{-- ///===alert alert- =     ===/// --}}
       <div class="modal-body">
             <div>
-                <p> Are you sure you want to delete <strong class="text-danger"><?php echo $programme->programme_name; ?></strong>?</p>
+                <p> Are you sure you want to delete <strong class="text-danger"><?php echo $department->department_name; ?></strong>?</p>
             </div>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-        <a href='{{url("/delete_programme/{$programme->id}")}}' class = "btn btn-danger">Delete</a>
+        <a href='{{url("/delete_department/{$department->id}")}}' class = "btn btn-danger">Delete</a>
       </div>
 
     </div>
@@ -122,9 +129,11 @@
 @endif
   </table>
           </div>
+      </div>
+      </div>
+    </div>
 
-
-    <!-- Modal_for adding programme -->
+    <!-- Modal_for adding department -->
 <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -134,12 +143,12 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action='{{url("/postprogramme")}}' method="POST">
+      <form action='{{url("/postdepartment")}}' method="POST">
         @csrf
       <div class="modal-body">
             <div class="form-group">
-                <label for="formGroupInput">programme Name</label>
-                <input type="text" name="programme_name" class="form-control" id="formGroupExampleInput" placeholder="add new">
+                <label for="formGroupExampleInput">Department Name</label>
+                <input type="text" name="department_name" class="form-control" id="formGroupExampleInput" placeholder="add new">
             </div>
 
       </div>
@@ -152,4 +161,6 @@
   </div>
  </div>
 </div>
+</div>
 @endsection
+
