@@ -25,15 +25,15 @@
                 <div class="col-md-3 p-3">
                     <button class="btn btn-primary"  data-toggle="modal" data-target="#add">Add New</button>
                 </div>
-                <table id="data" class="table table-striped table-bordered" cellspacing="0" width="100%">
-
-
+                
+                
+  <table id="data" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
        <tr>
         <th class="th-sm">Id
         </th>
 
-        <th class="th-sm">Course course_name
+        <th class="th-sm">Course code
         </th>
 
 
@@ -49,18 +49,18 @@
 @foreach ($courses as $course)
 <tr>
 <td>{{ ($course->id) }}</td>
-<td>{{ $course->course_name}}</td>
+<td>{{ $course->code}}</td>
 
 <td>
-    <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ ($course->course_name) }}">Edit</a>
-    <a href="#" type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{ ($course->course_name) }}1">Delete</a>
+    <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ ($course->code) }}">Edit</a>
+    <a href="#" type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{ ($course->code) }}1">Delete</a>
 
 </td>
 
 
 
 {{-- //===Modal for edit button pop up===// --}}
-<div class="modal fade" id="{{ ($course->course_name) }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="{{ ($course->code) }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -73,8 +73,8 @@
         @csrf
       <div class="modal-body">
             <div class="form-group">
-                <label for="formGroupInput">Course course_name</label>
-                <input type="text" name="course_name" class="form-control" id="formGroupInput"  value="<?php echo $course->course_name; ?>">
+                <label for="formGroupInput">Course</label>
+                <input type="text" name="code" class="form-control" id="formGroupInput"  value="<?php echo $course->code; ?>">
             </div>
 
 
@@ -91,7 +91,7 @@
 
 
 {{-- //====delete modal pop up button===// --}}
-<div class="modal fade" id="{{ ($course->course_name) }}1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="{{ ($course->code) }}1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -105,7 +105,7 @@
       {{-- ///===alert alert- =     ===/// --}}
       <div class="modal-body">
             <div>
-                <p> Are you sure you want to delete <strong class="text-danger"><?php echo $course->course_name; ?></strong>?</p>
+                <p> Are you sure you want to delete <strong class="text-danger"><?php echo $course->code; ?></strong>?</p>
             </div>
 
       </div>
@@ -141,8 +141,8 @@
         {{csrf_field()}}
       <div class="modal-body">
                 <div class="form-group">
-                <label>Course Name</label>
-                <input type="text" name="course_name" class="form-control" id="formGroupExampleInput" placeholder="add new">
+                <label>Course Code</label>
+                <input type="text" name="code" class="form-control" placeholder="add new">
                   </div>
 
               </div>

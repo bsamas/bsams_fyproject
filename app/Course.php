@@ -14,8 +14,6 @@ class Course extends Model
         'course_name',
         'semester',
         'year'
-
-
     ];
 
     protected $dates=[

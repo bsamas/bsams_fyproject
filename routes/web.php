@@ -27,7 +27,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');  
 
 
 //routes for student details#
@@ -51,16 +51,10 @@ Route::get('/showstaff', 'StaffController@getAllstaff')->name('showstaff');
 
 //course route
 
-Route::get('/ course', function() {
-    $programmes = Programme::all();
-    return view('course.course')->with([
-        'programmes' => $programmes
-    ]);
-
-});
+Route::get('/ course', ['uses'=>'CourseController@getAllCourses']);
 
 Route::post('/postcourse', 'CourseController@postCourse');
-Route::get('/viewcourse', 'CourseController@getAllCourses')->name('viewcourse');
+Route::get('/course', 'CourseController@getAllCourses')->name('course');
 Route::post('/edit_course/{id}', 'CourseController@edit');
 Route::get('/delete_course/{id}', 'CourseController@delete');
 

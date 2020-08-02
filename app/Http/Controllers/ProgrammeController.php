@@ -32,7 +32,8 @@ class ProgrammeController extends Controller
 
     public function postProgramme(Request $request)
     {
-         $programme_name = $request->input('programme_name');
+       
+       $programme_name = $request->input('programme_name');
 
         // logic that check if the programme exists but deleted then restore instead of dublicating
 $check = Programme::where('programme_name', $programme_name)->where('deleted_at', '!=', null)->withTrashed();
