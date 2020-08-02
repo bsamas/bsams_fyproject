@@ -120,7 +120,7 @@
 
 
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="component" class="nav-link">
               <i class="nav-icon fas fa-edit" style="font-size: 30px"></i>
               <p>
                 Attendance Report

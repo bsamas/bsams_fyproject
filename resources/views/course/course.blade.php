@@ -1,5 +1,3 @@
-
-
          {{--  <!-- start add Modal -->  --}}
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -218,26 +216,6 @@
 @endsection
 
 @section('scripts')
-       <script>
-          // Self-executing function
-      (function() {
-          'use strict';
-          window.addEventListener('load', function() {
-              // Fetch all the forms we want to apply custom Bootstrap validation styles to
-              var forms = document.getElementsByClassName('bsams-validation');
-              // Loop over them and prevent submission
-              var validation = Array.prototype.filter.call(forms, function(form) {
-                  form.addEventListener('submit', function(event) {
-                      if (form.checkValidity() === false) {
-                          event.preventDefault();
-                          event.stopPropagation();
-                      }
-                      form.classList.add('was-validated');
-                  }, false);
-              });
-          }, false);
-      });
-      </script>
 
         <script type="text/javascript">
         $(document).ready(function(){

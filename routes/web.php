@@ -51,10 +51,10 @@ Route::get('/showstaff', 'StaffController@getAllstaff')->name('showstaff');
 
 //course route
 
-Route::get('/ course', ['uses'=>'CourseController@getAllCourses']);
+Route::get('/ coursedetails', ['uses'=>'CourseController@getAllCourses']);
 
 Route::post('/postcourse', 'CourseController@postCourse');
-Route::get('/course', 'CourseController@getAllCourses')->name('course');
+Route::get('/coursedetails', 'CourseController@getAllCourses')->name('course');
 Route::post('/edit_course/{id}', 'CourseController@edit');
 Route::get('/delete_course/{id}', 'CourseController@delete');
 

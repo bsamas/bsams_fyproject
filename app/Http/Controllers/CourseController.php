@@ -13,7 +13,7 @@ class CourseController extends Controller
     {
         $courses = Course::all();
         // return response()->json(['courses' => $courses]);
-        return view('course.course', compact('courses'));
+        return view('course.coursedetails', compact('courses'));
     }
 
     public function getSingleCourse($coursesId)
@@ -39,13 +39,13 @@ $check = Course::where('code', $code)->where('deleted_at', '!=', null)->withTras
         if($check->exists()){
              $check->first()->restore();
 
-            return redirect('/course')->with('message', 'course submitted');
+            return redirect('/coursedetails')->with('message', 'course submitted');
 
         }
 
         else{
             if(Course::where('code', $code)->exists()){
-                return redirect('/course')->with('error', 'course exists ');
+                return redirect('/coursedetails')->with('error', 'course exists ');
             }
             else{
 
@@ -57,7 +57,7 @@ $check = Course::where('code', $code)->where('deleted_at', '!=', null)->withTras
         
                  $courses->save();
 
-                 return redirect('/course')->with('message', 'course added successfully ');
+                 return redirect('/coursedetails')->with('message', 'course added successfully ');
             }
         }
     }
@@ -146,12 +146,12 @@ $check = Course::where('code', $code)->where('deleted_at', '!=', null)->withTras
         $courses->code = $request->input('code');
         $courses->save();
 
-        return redirect('/course')->with('message', 'course updated successfully');
+        return redirect('/coursedetails')->with('message', 'course updated successfully');
     }
 
     public function delete($id){
         Course::find($id)->delete();
-        return redirect('/course')->with('message', 'course deleted successfully');
+        return redirect('/coursedetails')->with('message', 'course deleted successfully');
     }
 }
 

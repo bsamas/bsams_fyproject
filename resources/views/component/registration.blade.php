@@ -49,7 +49,7 @@
 
 
                                                       <li class="nav-item">
-                                                          <a class="nav-link"  href="course">
+                                                          <a class="nav-link"  href="coursedetails">
 
                                                               <i class="fa fa-microscope"> </i>
                                                               Course
