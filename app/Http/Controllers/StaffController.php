@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Staff;
 use Illuminate\Http\Request;
+use App\Department;
 use Illuminate\Support\Facades\Validator;
 
 class staffController extends Controller
@@ -11,8 +12,9 @@ class staffController extends Controller
     public function getAllstaff()
     {
         $staff = Staff::all();
+        $departments = Department::all();
         // return response()->json(['staff' => $staffs]);
-        return view('staff.showstaff', compact('staff'));
+        return view('staff.showstaff', compact('staff','departments'));
     }
 
     public function getSinglestaff($staffId)
@@ -59,6 +61,8 @@ class staffController extends Controller
         $staff->type=$request->input('type');
         $staff->email=$request->input('email');
         $staff->username=$request->input('username');
+        $staff->department_id=$request->input('department_id');
+
         $staff->password=$request->input('password');
         $staff->phone_number=$request->input('phone_number');
 

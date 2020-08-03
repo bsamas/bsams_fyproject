@@ -19,8 +19,8 @@ class Staff extends Model
         'email',
         'phone_number',
         'username',
-        'password'
-        // 'department_id',
+        'password',
+        'department_id',
         // 'room_id'
     ];
 
@@ -36,6 +36,6 @@ class Staff extends Model
 
     public function department()
     {
-        return $this->belongsTo(department::class);
+        return $this->belongsTo(department::class,'department_id');
     }
 }
