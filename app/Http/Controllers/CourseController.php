@@ -144,6 +144,7 @@ $check = Course::where('code', $code)->where('deleted_at', '!=', null)->withTras
      public function edit($id, Request $request){
         $courses = Course::where('id', $id)->first();
         $courses->code = $request->input('code');
+        
         $courses->save();
 
         return redirect('/coursedetails')->with('message', 'course updated successfully');

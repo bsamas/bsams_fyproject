@@ -70,7 +70,7 @@
       <div class="modal-body">
             <div class="form-group">
                 <label for="formGroupInput">Department Name</label>
-                <input type="text" name="department_name" class="form-control" id="formGroupInput"  value="<?php echo $department->department_name; ?>">
+                <input type="text" name="department_name" class="form-control" id="formGroupInput"  value="<?php echo $department->department_name; ?>" required>
             </div>
 
       </div>

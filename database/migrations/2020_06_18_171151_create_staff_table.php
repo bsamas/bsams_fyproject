@@ -17,13 +17,13 @@ class CreateStaffTable extends Migration
             $table->bigIncrements('id');
             $table->string('staff_number');
             $table->string('first_name');
-            $table->string('middle_name');
+            // $table->string('middle_name');
             $table->string('last_name');
             $table->string('gender');
             $table->string('type');
             $table->string('email')->unique();
             $table->string('phone_number')->unique();
-            $table->bigInteger('department_id');
+            $table->bigInteger('department_id')->nullable();
             $table->string('username');
             $table->string('password');
             $table->softDeletes();

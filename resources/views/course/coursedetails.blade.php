@@ -62,52 +62,50 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">COURSE DETAILS</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <form action='{{url("/edit_course/{$course->id}")}}' method="POST">
         @csrf
-      <div class="modal-body">
-            <div class="form group">
-                              <label>Course Code</label>
-                              <input type="text" class="form-control"  name="code" placeholder="Enter course code" required>
-                            </div>
+            <div class="modal-body">
+                  <div class="form group">
+                    <label>Course Code</label>
+                      <input type="text" class="form-control"  name="code" placeholder="Enter course code" required>
+                        </div>
 
-                            <div class="form group">
-                              <label>Course Name</label>
-                              <input type="text" class="form-control"  name="course_name" placeholder="Enter course name" required>
-                            </div>
+                        <div class="form group">
+                          <label>Course Name</label>
+                          <input type="text" class="form-control"  name="course_name" placeholder="Enter course name" required>
+                        </div>
 
-                              <div class="form group">
-                                  <label>Semester</label>
-                                  <select class="form-control" name="semester" required>
-                                  <option value="">Select type of semester</option>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  </select>
-                              </div>
+                          <div class="form group">
+                              <label>Semester</label>
+                              <select class="form-control" name="semester" required>
+                              <option value="">Select type of semester</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              </select>
+                          </div>
 
-                              <div class="form-group">
-                                <label>Year</label>
-                                <select class="form-control" name="year" required>
-                                <option value="">Select type of semester</option>
-                                <option value="2010">2010</option>
-                                <option value="2011">2011</option>
-                                <option value="2012">2012</option>
-                                <option value="2013">2013</option>
-                                <option value="2014">2014</option>
-                                <option value="2015">2015</option>
-                                <option value="2016">2016</option>
-                                <option value="2017">2017</option>
-                                <option value="2018">2018</option>
-                                </select>
-                              </div>
+                          <div class="form-group">
+                            <label>Year</label>
+                            <select class="form-control" name="year" required>
+                            <option value="">Select type of semester</option>
+                            <option value="2010">2010</option>
+                            <option value="2011">2011</option>
+                            <option value="2012">2012</option>
+                            <option value="2013">2013</option>
+                            <option value="2014">2014</option>
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                            </select>
+                          </div>
+                </div>
 
-
-
-      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save changes</button>
@@ -124,7 +122,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">COURSE DETAILS</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

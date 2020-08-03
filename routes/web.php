@@ -42,9 +42,7 @@ Route::get('/viewstudent', 'StudentController@getAllStudents')->name('viewstuden
 
 
 //staff routes
-Route::get('/ staff', function() {
-    return view('staff.staff');
-});
+Route::get('/ staff', ['uses'=>'StaffController@getAllStaff']);
 
 Route::post('/Staffpost', 'StaffController@postStaff');
 Route::get('/showstaff', 'StaffController@getAllstaff')->name('showstaff');

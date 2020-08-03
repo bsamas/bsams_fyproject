@@ -34,7 +34,8 @@
 
                                                       <li class="nav-item">
                                                           <a class="nav-link" href="registereddepartment">
-                                                              <i class="fa fa-money-bill"> </i>
+                                                              <i class="fa fa-building" aria-hidden="true"></i>
+
                                                               Department
                                                           </a>
                                                       </li>
@@ -42,7 +43,8 @@
                                                       <li class="nav-item">
                                                           <a class="nav-link"  href="viewprogramme">
 
-                                                              <i class="fa fa-user-md"> </i>
+                                                             <i class="fa fa-list-alt" aria-hidden="true"></i>
+
                                                              Programme
                                                           </a>
                                                       </li>
@@ -51,20 +53,23 @@
                                                       <li class="nav-item">
                                                           <a class="nav-link"  href="coursedetails">
 
-                                                              <i class="fa fa-microscope"> </i>
+                                                             <i class="fa fa-book" aria-hidden="true"></i>
+
                                                               Course
                                                           </a>
                                                       </li>
 
                                                       <li class="nav-item">
-                                                          <a class="nav-link" href="#">
-                                                              <i class="fa fa-pills"> </i>
+                                                          <a class="nav-link" href="showstaff">
+                                                              <i class="fa fa-user" aria-hidden="true"></i>
+
                                                               Staff
                                                           </a>
                                                       </li>
                                                       <li class="nav-item">
                                                           <a class="nav-link" href="#">
-                                                              <i class="fa fa-pills"> </i>
+                                                             <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+
                                                             Student
                                                           </a>
                                                       </li>

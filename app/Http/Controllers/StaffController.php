@@ -34,7 +34,6 @@ class staffController extends Controller
 
         'staff_number'=>'required',
         'first_name'=>'required',
-        'middle_name'=>'required',
         'last_name'=>'required',
         'gender'=>'required',
         'type'=>'required',
@@ -47,15 +46,14 @@ class staffController extends Controller
 
         ]);
         if($validator->fails()){
-            return response()->json([
+            return redirect('/showstaff')->with([
                 'error'=>$validator->errors(),
                 'message'=>$validator->errors()->first()
             ],404);
         }
         $staff=new Staff();
         $staff->staff_number=$request->input('staff_number');
-        $staff->first_name=$request->input('first_name');
-        $staff->middle_name=$request->input('middle_name');
+        $staff->first_name=$request->input('first_name');     
         $staff->last_name=$request->input('last_name');
         $staff->gender=$request->input('gender');
         $staff->type=$request->input('type');
@@ -67,7 +65,7 @@ class staffController extends Controller
 
 
         $staff->save();
-       return redirect('/staff')->with('message', 'registration done successfully');
+       return redirect('/showstaff')->with('message', 'registration done successfully');
     }
 
 
@@ -79,7 +77,7 @@ class staffController extends Controller
         [
             'staff_number'=>'required',
             'first_name'=>'required',
-            'middle_name'=>'required',
+            // 'middle_name'=>'required',
             'last_name'=>'required',
             'gender'=>'required',
             'type'=>'required',
@@ -104,8 +102,7 @@ class staffController extends Controller
 
         $staff->update([
             'staff_number'=> $request->staff_number,
-            'first_name'=> $request->first_name,
-            'middle_name'=> $request->middle_name,
+            'first_name'=> $request->first_name,          
             'last_name'=> $request->last_name,
             'gender'=> $request->gender,
             'email'=> $request->email,
@@ -125,10 +122,10 @@ class staffController extends Controller
 
         $staff = Staff::find($staffId);
 
-        if (!$staff) return response()->json(['error' => 'staff not found']);
+        if (!$staff) return redirect('/showstaff')->with(['error' => 'staff not found']);
 
         $staff->delete();
 
-        return response()->json(['message' => 'staff deleted successfully!']);
+        return redirect('/showstaff')->with(['message' => 'staff deleted successfully!']);
     }
 }
