@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
 
    {{--  <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">  --}}
@@ -66,7 +66,7 @@
       </div>
     </form>
 </div>
-  
+
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -84,7 +84,7 @@
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
       <img src="{{ asset('dist/img/AdminLTELogo.png.js') }}" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Biometric SAMS</span>
+      <span class="brand-text font-weight-light">BIOMETRIC SAMS</span>
     </a>
 
 
@@ -94,7 +94,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item active">
-            <a href="#" class="nav-link active">
+            <a href="home" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -103,9 +103,9 @@
           </li>
 
 
-          <li class="nav-item active" >
+          <li class="nav-item has-treeview" >
             <a href="component" class="nav-link" style="color: #ffffffff">
-               <i class="nav-icon fas fa-edit" style="font-size: 30px"></i>
+               <i class="nav-icon fas fa-edit" style="font-size: 20px"></i>
               <p>
                Registration
               </p>
@@ -119,22 +119,14 @@
 {{--  <!--attendance report-->  --}}
 
 
-          <li class="nav-item has-treeview">
-            <a href="component" class="nav-link">
-              <i class="nav-icon fas fa-edit" style="font-size: 30px"></i>
+          <li class="nav-item active">
+            <a href="attendance" class="nav-link" style="color: #ffffffff">
+              <i class="nav-icon fas fa-edit" style="font-size: 20px"></i>
               <p>
-                Attendance Report
-                <i class="fas fa-angle-left right"></i>
+                Attendance
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="report" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Generate Report</p>
-                </a>
-               </li>
-            </ul>
+
           </li>
 
 
@@ -223,12 +215,12 @@
 <!-- Bootstrap 4 -->
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- ChartJS -->
-{{--  <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>  --}}
+ <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
 <!-- Sparkline -->
-{{--  <script src="{{ asset('plugins/sparklines/sparkline.js') }}"></script>  --}}
+ <script src="{{ asset('plugins/sparklines/sparkline.js') }}"></script>
 <!-- JQVMap -->
 <script src="{{ asset('plugins/jqvmap/jquery.vmap.min.js') }}"></script>
-{{--  <script src="{{ asset('plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>  --}}
+ <script src="{{ asset('plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
 <!-- jQuery Knob Chart -->
 <script src="{{ asset('plugins/jquery-knob/jquery.knob.min.js') }}"></script>
 <!-- daterangepicker -->

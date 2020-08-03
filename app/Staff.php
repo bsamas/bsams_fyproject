@@ -36,6 +36,8 @@ class Staff extends Model
 
     public function department()
     {
-        return $this->belongsTo(department::class,'department_id');
+
+        // referencing foreign key from department//
+        return $this->belongsTo(department::class,'department_id'); 
     }
 }

@@ -61,8 +61,8 @@ class staffController extends Controller
         $staff->type=$request->input('type');
         $staff->email=$request->input('email');
         $staff->username=$request->input('username');
-        $staff->department_id=$request->input('department_id');
-
+        //  how to print foreign key details
+        $staff->department_id=$request->input('department_id'); 
         $staff->password=$request->input('password');
         $staff->phone_number=$request->input('phone_number');
 

@@ -45,7 +45,8 @@
               <td>{{ $staff->last_name }}</td>
               <td>{{ $staff->gender }}</td>
               <td>{{ $staff->type }}</td>
-              <td>{{ $staff->department->department_name}}</td>
+              {{--  //how to print foreign key details//  --}}
+              <td>{{ $staff->department->department_name}}</td> 
               <td>{{ $staff->phone_number }}</td>
               <td>{{ $staff->email }}</td>
               <td>{{ $staff->username }}</td>
@@ -231,6 +232,7 @@
      <div class="form-group col-md-3">
         <label for="inputDepartment">Department</label>
             <select name="department_id" class="form-control" required>
+            // this loops the department details from the table department
            @foreach($departments as $department)
          <option value="{{$department->id}}">{{$department->department_name}}</option>
             

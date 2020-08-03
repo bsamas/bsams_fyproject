@@ -43,14 +43,12 @@ Route::get('/viewstudent', 'StudentController@getAllStudents')->name('viewstuden
 
 //staff routes
 Route::get('/ staff', ['uses'=>'StaffController@getAllStaff']);
-
 Route::post('/Staffpost', 'StaffController@postStaff');
 Route::get('/showstaff', 'StaffController@getAllstaff')->name('showstaff');
 
 //course route
 
 Route::get('/ coursedetails', ['uses'=>'CourseController@getAllCourses']);
-
 Route::post('/postcourse', 'CourseController@postCourse');
 Route::get('/coursedetails', 'CourseController@getAllCourses')->name('course');
 Route::post('/edit_course/{id}', 'CourseController@edit');
@@ -71,7 +69,13 @@ Route::get('/delete_department/{id}', 'DepartmentController@delete');
 
 Route::get('/ component', function() {
     return view('component.registration');
+   
 });
+
+Route::get('/ attendance', function() {
+    return view('attendance.attendance_report');
+});
+
 
 
 Route::get('/programme', function() {
