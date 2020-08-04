@@ -180,7 +180,7 @@
                 <label for="inputYearOfStudy">Year of study </label>
              <select id="inputYearOfStudy" class="form-control" name="year_of_study" required>
             <option value="">Select year of study</option>
-           
+
             <option value="2011">2011</option>
             <option value="2012">2012</option>
             <option value="2013">2013</option>
@@ -202,7 +202,7 @@
        <label for="inputPhonenumber">Phone number</label>
      <input type="number" class="form-control" id="inputPhonenumber" name="phone_number" placeholder="Phone number" required>
 </div>
-  </div> 
+  </div>
      <div class="form-group col-md-12">
         <div class="col-sm-10 offset-sm-9">
             <input type="submit" class="btn btn-primary" style="width: 15%" value="Submit">

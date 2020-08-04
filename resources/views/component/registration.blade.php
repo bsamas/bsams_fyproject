@@ -41,7 +41,7 @@
                                                       </li>
 
                                                       <li class="nav-item">
-                                                          <a class="nav-link"  href="viewprogramme">
+                                                          <a class="nav-link"  href="programme">
 
                                                              <i class="fa fa-list-alt" aria-hidden="true"></i>
 
@@ -51,7 +51,7 @@
 
 
                                                       <li class="nav-item">
-                                                          <a class="nav-link"  href="coursedetails">
+                                                          <a class="nav-link"  href="course">
 
                                                              <i class="fa fa-book" aria-hidden="true"></i>
 
@@ -60,7 +60,7 @@
                                                       </li>
 
                                                       <li class="nav-item">
-                                                          <a class="nav-link" href="showstaff">
+                                                          <a class="nav-link" href="staff">
                                                               <i class="fa fa-user" aria-hidden="true"></i>
 
                                                               Staff
@@ -98,7 +98,7 @@
                                       </div>
                                   </div>
                               </div>
-                          </div>
+                          {{-- </div> --}}
                       </div>
                   </div>
               </main>

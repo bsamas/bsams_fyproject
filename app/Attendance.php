@@ -14,10 +14,10 @@ class Attendance extends Model
       'date',
       'type',
       'count',
-      
+
     //   'time',
-    //   'course_id',
-    //   'student_id'
+      'course_id',
+      'student_id'
   ];
 
   protected $dates=[
@@ -26,13 +26,13 @@ class Attendance extends Model
 
   public function course()
   {
-   return $this->belongsTo(course::class);
+   return $this->belongsTo(course::class,'course_id');
   }
 
 
   public function student()
   {
-      return $this->belongsTo(student::class);
+      return $this->belongsTo(student::class,'student_id');
   }
 
 }

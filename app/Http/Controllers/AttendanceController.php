@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Attendance;
+use App\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -11,8 +12,9 @@ class AttendanceController extends Controller
     public function getAllAttendances()
     {
         $attendances = Attendance::all();
-        // return response()->json(['attendances' => $attendances]);
-        return view('report.report', compact('attendances'));
+        $courses = Course::all();
+
+        return view('attendance.report', compact('attendances', 'courses'));
     }
 
     public function getSingleAttendance($attendanceId)
@@ -47,6 +49,7 @@ class AttendanceController extends Controller
         $attendance->status=$request->input('status');
         $attendance->type=$request->input('type');
         // $attendance->time=$request->input('time');
+        $attendance->course_id=$request->input('course_id');
         $attendance->count=$request->input('count');
 
         $attendance->save();

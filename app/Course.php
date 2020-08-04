@@ -22,7 +22,7 @@ class Course extends Model
 
 public function staff()
 {
-return $this->belongsTo(Staff::class);
+return $this->belongsTo(Staff::class,'staff_id');
 }
 
 public function attendances()
@@ -31,11 +31,11 @@ public function attendances()
 }
 
 public function students(){
-    return $this->belongsToMany(Student::class);
+    return $this->belongsToMany(Student::class,'student_id');
 }
 public function department()
 {
-    return $this->belongsTo(department::class);
+    return $this->belongsTo(department::class,'department_id');
 }
 
 public function rooms()

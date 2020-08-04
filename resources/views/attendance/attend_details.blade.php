@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div cl//a'''ss="container">
+<div class="container">
 
         {{-- ///== the add pop up button====// --}}
       <div class="col-md-3 p-3">
@@ -46,12 +46,12 @@
               <td>{{ $staff->gender }}</td>
               <td>{{ $staff->type }}</td>
               {{--  //how to print foreign key details//  --}}
-              <td>{{ $staff->department_name}}</td>
+              <td>{{ $staff->department->department_name}}</td>
               <td>{{ $staff->phone_number }}</td>
               <td>{{ $staff->email }}</td>
               <td>{{ $staff->username }}</td>
               <td>
-                <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit_staff">Edit</a>
+                <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ ($staff->staff_number) }}">Edit</a>
                 <a href="#" type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{ ($staff->staff_number)}}1">Delete</a>
               </td>
 
@@ -279,11 +279,13 @@
          <label for="inputPassword">Confirm</label>
       <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
    </div>
- </div>
-     </div>
+  </div>
+
+
+      </div>
         <div class="modal-footer">
-         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-         <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
       </div>
       </form>.
     </div>

@@ -15,7 +15,7 @@
                                       <div class="col-md-8">
                                           <h3>
                                               <i class="nav-icon fas fa-edit"> </i>
-                                            RegisterX
+                                            Register
                                           </h3>
                                       </div>
                                   </div>
@@ -42,7 +42,7 @@
 
                                             <li class="nav-item">
                                                 <a class="nav-link" href="#">
-                                                    <i class="fa fa-building" aria-hidden="true"></i>
+                                                   <i class="fa fa-bell" aria-hidden="true"></i>
 
                                                     Notification
                                                 </a>

@@ -42,7 +42,8 @@ class staffController extends Controller
         'email'=>'required',
         'phone_number'=>'required',
         'username'=>'required',
-        'password'
+        'password',
+        'department_id'
 
 
 

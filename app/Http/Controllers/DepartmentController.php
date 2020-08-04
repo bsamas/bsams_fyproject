@@ -26,11 +26,12 @@ class DepartmentController extends Controller
         return response()->json(['department' => $department]);
     }
 
+    
     public function postDepartment(Request $request)
     {
         $department_name = $request->input('department_name');
 
-        // logic that check if the department exists but deleted then restore instead of dublicating 
+        // logic that check if the department exists but deleted then restore instead of dublicating
 $check = Department::where('department_name', $department_name)->where('deleted_at', '!=', null)->withTrashed();
 
         if($check->exists()){

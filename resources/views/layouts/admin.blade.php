@@ -40,7 +40,7 @@
 
  <div class="wrapper">
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="background-color:rgb(60, 141, 188);">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -65,36 +65,37 @@
         </div>
       </div>
     </form>
+  </nav>
 </div>
 
 
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+    {{-- <ul class="navbar-nav ml-auto" >
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
         </a>
       </li>
-    </ul>
+    </ul> --}}
   </nav>
   <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Main leftsidebar Container -->
+  <aside class="main-sidebar sidebar-dark-blue-primary elevation-4" >
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-      <img src="{{ asset('dist/img/AdminLTELogo.png.js') }}" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">BIOMETRIC SAMS</span>
+    <a href="#" class="brand-link" style="background-color:rgb(60, 141, 188);">
+      <img src="#" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light" style="color:#ffff;">BIOMETRIC SAMS</span>
     </a>
 
 
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+<nav class="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item active">
-            <a href="home" class="nav-link active">
+          <li class="nav-item activee">
+            <a href="home" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -102,33 +103,70 @@
             </a>
           </li>
 
-
-          <li class="nav-item has-treeview" >
-            <a href="component" class="nav-link" style="color: #ffffffff">
-               <i class="nav-icon fas fa-edit" style="font-size: 20px"></i>
-              <p>
-               Registration
+<li class="nav-item has-treeview">
+     <a href="#" class="nav-link">
+          <i class="fa fa-building" aria-hidden="true"></i>
+             <p>
+               Department
               </p>
-            </a>
-            {{--  @include('component.registration')  --}}
-          </li>
+         </a>
+<ul class="nav nav-treeview">
+<li class="nav-item">
+     <a href="department" class="nav-link">
+          <i class="fa fa-building" aria-hidden="true"></i>
+          
+        <span class="brand-text font-weight-light">Department detail</span>
+    </a>
+</li>
+
+
+
+<li class="nav-item">
+    <a href="programme" class="nav-link">
+       
+         <i class="fa fa-list-alt" aria-hidden="true"></i>
+         <span class="brand-text font-weight-light">Programme</span>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="course" class="nav-link">
+      
+        <i class="fa fa-book" aria-hidden="true"></i>
+        <span class="brand-text font-weight-light">Course Details</span>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="staff" class="nav-link">
+      
+         <i class="fa fa-user" aria-hidden="true"></i>
+      <span class="brand-text font-weight-light">Staff Details</span>
+    </a>
+</li>
+</ul>
+</li>
+
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+        <i class="fa fa-graduation-cap" aria-hidden="true"></i
+              <span class="brand-text font-weight-light">Student Informations</span>
+    </a>
+</li>
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-edit" style="font-size: 20px"></i>
+        <span class="brand-text font-weight-light">Attendance Reports</span>
+    </a>
+</li>
 
 
 
 
-{{--  <!--attendance report-->  --}}
 
 
-          <li class="nav-item active">
-            <a href="attendance" class="nav-link" style="color: #ffffffff">
-              <i class="nav-icon fas fa-edit" style="font-size: 20px"></i>
-              <p>
-                Attendance
-              </p>
-            </a>
 
-          </li>
-
+ 
 
 
           {{--  <li class="nav-item has-treeview">
@@ -160,24 +198,22 @@
           {{--  //logout#  --}}
 
           <li class="nav-item">
-                <a class="nav-link"" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-
-                                                      <i class="nav-icon far fa-circle text-danger"></i>
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </li>
-        </ul>
-
-
-      </nav>
+                <a class="nav-link" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            <i class="nav-icon far fa-circle text-danger"></i>
+                                {{ __('Logout') }}
+                            </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </li>
+    </ul>
+</nav>
       <!-- /.sidebar-menu -->
-    </div>
+
+
+
     <!-- /.sidebar -->
   </aside>
 
@@ -255,5 +291,5 @@
          {{--  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
          <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>  --}}  --}}
 
-</body>
+ </body>
 </html>
