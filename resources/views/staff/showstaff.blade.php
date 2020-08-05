@@ -230,7 +230,7 @@
 </div>
   <div class="form-group row">
      <div class="form-group col-md-3">
-        <label for="inputDepartment">Department</label>
+        <label>Department</label>
             <select name="department_id" class="form-control" required>
             // this loops the department details from the table department
            @foreach($departments as $department)

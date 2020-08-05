@@ -11,7 +11,7 @@ class Programme extends Model
     use SoftDeletes;
 
     protected $fillable=[
-        'programme_name'
+        'name'
     ];
 
      protected  $dates=[
@@ -26,7 +26,7 @@ class Programme extends Model
 
     public function department()
     {
-        return $this->belongsTo(department::class);
+        return $this->belongsTo(Department::class);
     }
 
 }

@@ -52,7 +52,7 @@ Route::get('/course', ['uses'=>'CourseController@getAllCourses']);
 
 Route::post('/postcourse', 'CourseController@postCourse');
 Route::get('/coursedetails', 'CourseController@getAllCourses')->name('course');
-Route::post('/edit_course/{id}', 'CourseController@edit');
+Route::post('/edit_course/{id}', 'CourseController@editCourse');
 Route::get('/delete_course/{id}', 'CourseController@delete');
 
 

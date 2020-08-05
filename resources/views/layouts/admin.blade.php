@@ -227,9 +227,7 @@
   <footer class="main-footer">
     <strong> Copyright &copy; Biometric student attendance management system</strong>
           All rights reserved.
-    {{--  <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.1.0-pre
-    </div>  --}}
+   
   </footer>
 
   <!-- Control Sidebar -->
@@ -289,7 +287,7 @@
           {{--  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  --}}
 
          {{--  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-         <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>  --}}  --}}
+         <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>  --}}  
 
  </body>
 </html>

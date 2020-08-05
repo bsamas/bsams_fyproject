@@ -33,8 +33,9 @@
                 <th scope="col">Id</th>
                 <th scope="col">Course Code</th>
                 <th scope="col">Course Name</th>
+                <th scope="col">Programme</th>
                 <th scope="col">Semester</th>
-                <th scope="col">Year of Study</th>
+                <th scope="col">Class of Study</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -47,8 +48,9 @@
 <td>{{ ($course->id) }}</td>
 <td>{{ $course->code}}</td>
 <td>{{ ($course->course_name) }}</td>
+<td>{{ ($course->programme_id) }}</td>
 <td>{{ $course->semester}}</td>
-<td>{{ ($course->year) }}</td>
+<td>{{ ($course->class) }}</td>
 <td>
     <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit_course" data-course="{{ ($course) }}">Edit</a>
     <a href="#" type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{ ($course->code) }}1">Delete</a>
@@ -57,9 +59,6 @@
 
 
 
-{{-- //===start edit button pop up===// --}}
-
-{{-- //===End edit button pop up===// --}}
 
 
 {{-- //====start delete modal pop up button===// --}}
@@ -130,19 +129,26 @@
                                   </select>
                               </div>
 
+                              <div class="form group">
+                                  <label>Programme</label>
+                                  <select class="form-control" name="programme_id" required>
+                                  <option value="">Select programme</option>
+                                  @foreach ($programmes as $programme)
+                                  <option value="{{$programme->name}}">{{$programme->name}}</option>
+                                  @endforeach
+                                  </select>
+                              </div>
+
                               <div class="form-group">
-                                  <label>Year</label>
-                                  <select class="form-control" name="year" required>
-                                  <option value="">Select of study</option>
-                                  <option value="2010">2010</option>
-                                  <option value="2011">2011</option>
-                                  <option value="2012">2012</option>
-                                  <option value="2013">2013</option>
-                                  <option value="2014">2014</option>
-                                  <option value="2015">2015</option>
-                                  <option value="2016">2016</option>
-                                  <option value="2017">2017</option>
-                                  <option value="2018">2018</option>
+                                  <label>Class</label>
+                                  <select class="form-control" name="class" required>
+                                  <option value="">Select class of study</option>
+                                    <option value="First year">First year</option>
+                                    <option value="Second year">Second year</option>
+                                    <option value="Third year">Third year</option>
+                                    <option value="Fourth year">Fourth year</option>
+                                    <option value="Fifth year">Fifth year</option>
+                                        
                                   </select>
                               </div>
 
@@ -159,6 +165,9 @@
    <!-- End adding course -->
 
 
+
+ {{-- //===start edit button pop up===// --}}
+
    <div class="modal fade" id="edit_course" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -168,8 +177,9 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action='{{url("/edit_course/{$course->id}")}}' method="POST">
-        @csrf
+      <form action='{{url("/edit_course/{id}")}}' method="POST">
+        {{csrf_field()}}
+       
             <div class="modal-body">
                   <div class="form group">
                     <label>Course Code</label>
@@ -178,9 +188,18 @@
 
                         <div class="form group">
                           <label>Course Name</label>
-                          <input type="text" class="form-control" id="edit_course_name"  name="course_name" placeholder="Enter course name" required>
+                          <input type="text" class="form-control" id="course_name"  name="course_name" placeholder="Enter course name" required>
                         </div>
 
+                          <div class="form group">
+                                  <label>Programme</label>
+                                  <select class="form-control" id="programme" name="programme_id" required>
+                                  <option value="">Select programme</option>
+                                  @foreach ($programmes as $programme)
+                                  <option value="{{$programme->id}}">{{$programme->name}}</option>
+                                  @endforeach
+                                  </select>
+                              </div>
                           <div class="form group">
                               <label>Semester</label>
                               <select class="form-control" id="edit_semester" name="semester" required>
@@ -191,18 +210,15 @@
                           </div>
 
                           <div class="form-group">
-                            <label>Year</label>
-                            <select class="form-control" id="edit_year" name="year" required>
-                            <option value="">Select type of semester</option>
-                            <option value="2010">2010</option>
-                            <option value="2011">2011</option>
-                            <option value="2012">2012</option>
-                            <option value="2013">2013</option>
-                            <option value="2014">2014</option>
-                            <option value="2015">2015</option>
-                            <option value="2016">2016</option>
-                            <option value="2017">2017</option>
-                            <option value="2018">2018</option>
+                            <label>Class</label>
+                            <select class="form-control" id="edit_class" name="class" required>
+                           
+                            <option value="">Select class of study</option>
+                            <option value="First year">First year</option>
+                            <option value="Second year">Second year</option>
+                            <option value="Third year">Third year</option>
+                            <option value="Fourth year">Fourth year</option>
+                            <option value="Fifth year">Fifth year</option>
                             </select>
                           </div>
                 </div>
@@ -215,6 +231,8 @@
     </div>
   </div>
 </div>
+
+{{-- //===End edit button pop up===// --}}
 @endsection
 
 @section('scripts')
@@ -225,11 +243,13 @@
         console.log(course)
         var modal = $(this)
         modal.find('#edit_code').val(course['code'])
-        modal.find('#edit_course_name').val(course['edit_course_name'])
+        modal.find('#course_name').val(course['course_name'])
         modal.find('#edit_semester').val(course['semester'])
-        modal.find('#edit_year').val(course['year'])
+        modal.find('#edit_class').val(course['class'])
+        modal.find('#programme').val(course['programme'])
 
     })
 </script>
+
 @endsection
 

@@ -33,10 +33,10 @@ class ProgrammeController extends Controller
     public function postProgramme(Request $request)
     {
        
-       $programme_name = $request->input('programme_name');
+       $name = $request->input('name');
 
         // logic that check if the programme exists but deleted then restore instead of dublicating
-$check = Programme::where('programme_name', $programme_name)->where('deleted_at', '!=', null)->withTrashed();
+$check = Programme::where('name', $name)->where('deleted_at', '!=', null)->withTrashed();
 
         if($check->exists()){
              $check->first()->restore();
@@ -46,13 +46,13 @@ $check = Programme::where('programme_name', $programme_name)->where('deleted_at'
         }
 
         else{
-            if(Programme::where('programme_name', $programme_name)->exists()){
+            if(Programme::where('name', $name)->exists()){
                 return redirect('/viewprogramme')->with('error', 'programme exists ');
             }
             else{
 
                 $programme=new programme;
-                 $programme->programme_name=$request->input('programme_name');
+                 $programme->name=$request->input('name');
 
 
                  $programme->save();
@@ -65,7 +65,7 @@ $check = Programme::where('programme_name', $programme_name)->where('deleted_at'
     //     $validator=Validator::make($request->all(),
     //     [
 
-    //         'programme_name'=>'required'
+    //         'name'=>'required'
 
     //     ]);
     //     if($validator->fails()){
@@ -75,7 +75,7 @@ $check = Programme::where('programme_name', $programme_name)->where('deleted_at'
     //         ],404);
     //     }
     //     $programme=new Programme();
-    //     $programme->programme_name=$request->input('programme_name');
+    //     $programme->name=$request->input('name');
 
 
     //     $programme->save();
@@ -88,7 +88,7 @@ $check = Programme::where('programme_name', $programme_name)->where('deleted_at'
 
           $validator=Validator::make($request->all(),
         [
-            'programme_name'=>'required'
+            'name'=>'required'
         ]);
 
 
@@ -104,7 +104,7 @@ $check = Programme::where('programme_name', $programme_name)->where('deleted_at'
 
         $programme->update([
 
-            'programme_name'=> $request->programme_name,
+            'name'=> $request->name,
 
 
         ]);
@@ -127,7 +127,7 @@ $check = Programme::where('programme_name', $programme_name)->where('deleted_at'
 
     public function edit($id, Request $request){
          $programme = Programme::where('id', $id)->first();
-        $programme->programme_name = $request->input('programme_name');
+        $programme->name = $request->input('name');
         $programme->save();
 
         return redirect('/viewprogramme')->with('message', 'programme updated successfully');

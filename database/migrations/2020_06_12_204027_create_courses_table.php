@@ -18,9 +18,9 @@ class CreateCoursesTable extends Migration
             $table->string('code');
             $table->string('course_name');
             $table->string('semester');
-            $table->string('year');
-            $table->string('programme_id')->nullable();
-            $table->bigInteger('lecturer_id')->nullable();
+            $table->string('class');
+            $table->string('programme_id');
+            // $table->bigInteger('staff_id');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -13,7 +13,8 @@ class Course extends Model
         'code',
         'course_name',
         'semester',
-        'year'
+        'class',
+        'programme_id'
     ];
 
     protected $dates=[
@@ -35,17 +36,17 @@ public function students(){
 }
 public function department()
 {
-    return $this->belongsTo(department::class,'department_id');
+    return $this->belongsTo(Department::class,'department_id');
 }
 
 public function rooms()
 {
-    return $this->belongsToMany(room::class);
+    return $this->belongsToMany(Room::class);
 }
 
 public function programme()
 {
-    return $this->belongsTo(programme::class);
+    return $this->belongsTo(Programme::class,'programme_id');
 }
 
 }

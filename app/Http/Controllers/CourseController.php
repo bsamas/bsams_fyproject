@@ -9,11 +9,12 @@ use Illuminate\Support\Facades\Validator;
 
 class CourseController extends Controller
 {
-      public function getAllCourses()
+       public function getAllCourses()
     {
         $courses = Course::all();
+        $programmes = Programme::all();
         // return response()->json(['courses' => $courses]);
-        return view('course.coursedetails', compact('courses'));
+        return view('course.coursedetails', compact('courses','programmes'));
     }
 
     public function getSingleCourse($coursesId)
@@ -30,22 +31,33 @@ class CourseController extends Controller
     public function postCourse(Request $request)
     {
 
-       
         $code= new Course;
+
+        $validator=Validator::make($request->all(),
+        [
+            'code'=>'required | unique:courses',
+            'course_name'=>'required',
+            'semester'=>'required',
+            'class'=>'required',
+            'programme_id'=>'required'
+        ]);
+        //  if($validator->fails()){
+        //     return redirect('/coursedetails')->with('message', 'course exists'
+        //        );
+        // }
           
         // logic that check if the course exists but deleted then restore instead of dublicating
 $check = Course::where('code', $code)->where('deleted_at', '!=', null)->withTrashed();
 
         if($check->exists()){
              $check->first()->restore();
-
             return redirect('/coursedetails')->with('message', 'course submitted');
 
         }
 
         else{
-            if(Course::where('code', $code)->exists()){
-                return redirect('/coursedetails')->with('error', 'course exists ');
+            if($validator->fails()){
+                return redirect('/coursedetails')->with('message', 'course already exists ');
             }
             else{
 
@@ -53,7 +65,8 @@ $check = Course::where('code', $code)->where('deleted_at', '!=', null)->withTras
                 $courses->code = $request->input('code');
                 $courses->course_name=$request->input('course_name');
                 $courses->semester=$request->input('semester');
-                $courses->year=$request->input('year');
+                $courses->class=$request->input('class');
+                $courses->programme_id=$request->input('programme_id');
         
                  $courses->save();
 
@@ -66,7 +79,7 @@ $check = Course::where('code', $code)->where('deleted_at', '!=', null)->withTras
     //         'code'=>'required | unique:courses',
     //         'code'=>'required',
     //         'semester'=>'required',
-    //         'year'=>'required',
+    //         'class'=>'required',
     //         'programme_id'=>'required'
 
     //     ]);
@@ -83,7 +96,7 @@ $check = Course::where('code', $code)->where('deleted_at', '!=', null)->withTras
     //     $courses->code=$request->input('code');
     //     $courses->code=$request->input('code');
     //     $courses->semester=$request->input('semester');
-    //     $courses->year=$request->input('year');
+    //     $courses->class=$request->input('class');
     //     // $courses->programme_id=$request->input('programme_id');
 
     //     $programme->save([$courses]);
@@ -91,48 +104,52 @@ $check = Course::where('code', $code)->where('deleted_at', '!=', null)->withTras
     //     return redirect('/course')->with('message', 'course registered successfully');
     // }
 
-     public function putCourse(Request $request, $coursesId)
+     public function editCourse(Request $request, $id)
     {
 
           $validator=Validator::make($request->all(),
         [
 
             'code'=>'required ',
-            'code'=>'required',
+            'course_name'=>'required',
             'semester'=>'required',
-            'year'=>'required',
-            // 'programme_id'=>'required'
+            'class'=>'required',
+            'programme_id'=>'required'
 
         ]);
 
 
         if($validator->fails())
-            return response()->json([
+            return redirect('/coursedetails')->with([
                 'error'=>$validator->errors(),
                 'message'=>$validator->errors()->first()
             ],404);
 
-        $courses = Course::find($coursesId);
+        $courses = Course::find($id);
 
-        if(!$courses)  return response()->json(['error'=>'course not found']);
+        if(!$courses)  return redirect('/coursedetails')->with(['error'=>'course not found']);
 
         $courses->update([
             'code'=> $request->code,
-            'code'=> $request->code,
+            'course_name'=> $request->course_name,
             'semester'=> $request->semester,
-            'year'=> $request->year,
-            // 'programme_id'=> $request->programme_id
+            'class'=> $request->class,
+            'programme_id'=> $request->programme_id
 
         ]);
 
 
         // $courses->update($request->all());
+        $courses->save();
+
+        return redirect('/coursedetails')->with('message', 'course updated successfully');
     }
 
-    public function deleteCourse($coursesId)
+
+    public function deleteCourse($id)
     {
 
-        $courses = Course::find($coursesId);
+        $courses = Course::find($id);
 
         if (!$courses) return response()->json(['error' => 'course not found']);
 
@@ -141,14 +158,17 @@ $check = Course::where('code', $code)->where('deleted_at', '!=', null)->withTras
         return response()->json(['message' => 'course deleted successfully!']);
     }
 
-     public function edit($id, Request $request){
-        $courses = Course::where('id', $id)->first();
-        $courses->code = $request->input('code');
+    //  public function edit($id, Request $request){
+    //     $courses = Course::where('id', $id)->first();
+    //     $courses->code = $request->input('code');
+    //     $courses->course_name = $request->input('course_name');
+    //     $courses->semester = $request->input('semester');
+    //     $courses->class = $request->input('class');
         
-        $courses->save();
+    //     $courses->save();
 
-        return redirect('/coursedetails')->with('message', 'course updated successfully');
-    }
+    //     return redirect('/coursedetails')->with('message', 'course updated successfully');
+    // }
 
     public function delete($id){
         Course::find($id)->delete();

@@ -32,7 +32,7 @@
        <tr>
         <th class="th-sm">Id
         </th>
-        <th class="th-sm">programme Name
+        <th class="th-sm">Name
         </th>
         <th class="th-sm">Action
         </th>
@@ -41,22 +41,22 @@
 
 
 
-    {{-- //=====check the list of programme if its greater than 0 then can be displayed.====// --}}
+    {{-- //=====check the list of if its greater than 0 then can be displayed.====// --}}
 @if(count($programmes) > 0)
 @foreach ($programmes as $programme)
 <tr>
 <td>{{ ($programme->id) }}</td>
-<td>{{ $programme->programme_name}}</td>
+<td>{{ $programme->name}}</td>
 <td>
-    <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ ($programme->programme_name) }}">Edit</a>
-    <a href="#" type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{ ($programme->programme_name) }}1">Delete</a>
+    <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ ($programme->name) }}">Edit</a>
+    <a href="#" type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{ ($programme->name) }}1">Delete</a>
 
 </td>
 
 
 
 {{-- //===Modal for edit button pop up===// --}}
-<div class="modal fade" id="{{ ($programme->programme_name) }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="{{ ($programme->name) }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -69,8 +69,8 @@
         @csrf
       <div class="modal-body">
             <div class="form-group">
-                <label for="formGroupInput">programme Name</label>
-                <input type="text" name="programme_name" class="form-control" id="formGroupInput"  value="<?php echo $programme->programme_name; ?>">
+                <label for="formGroupInput">Name</label>
+                <input type="text" name="name" class="form-control" id="formGroupInput"  value="<?php echo $programme->name; ?>">
             </div>
 
       </div>
@@ -86,7 +86,7 @@
 
 
 {{-- //====delete modal pop up button===// --}}
-<div class="modal fade" id="{{ ($programme->programme_name) }}1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="{{ ($programme->name) }}1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -100,7 +100,7 @@
       {{-- ///===alert alert- =     ===/// --}}
       <div class="modal-body">
             <div>
-                <p> Are you sure you want to delete <strong class="text-danger"><?php echo $programme->programme_name; ?></strong>?</p>
+                <p> Are you sure you want to delete <strong class="text-danger"><?php echo $programme->name; ?></strong>?</p>
             </div>
 
       </div>
@@ -124,7 +124,7 @@
           </div>
 
 
-    <!-- Modal_for adding programme -->
+    <!-- Modal_for adding -->
 <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -138,8 +138,8 @@
         @csrf
       <div class="modal-body">
             <div class="form-group">
-                <label for="formGroupInput">programme Name</label>
-                <input type="text" name="programme_name" class="form-control" id="formGroupExampleInput" placeholder="add new">
+                <label for="formGroupInput">Name</label>
+                <input type="text" name="name" class="form-control" id="formGroupExampleInput" placeholder="add new">
             </div>
 
       </div>
