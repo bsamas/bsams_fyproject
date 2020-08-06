@@ -39,19 +39,19 @@
 
   <div class="form-row">
      <div class="form-group col-md-6">
-        <label for="inputDatefBbirth">Start Date</label>
+        <label>Start Date</label>
            <input type="date" class="form-control datepicker" id="inputDateOfBirth" name="date_of_birth" placeholder="Enter your birth date" required>
               </div>
                  <div class="form-group col-md-6">
-                  <label for="inputDatefBbirth">End Date</label>
+                  <label>End Date</label>
            <input type="date" class="form-control datepicker" id="inputDateOfBirth" name="date_of_birth" placeholder="Enter your birth date" required>
    </div>
 </div>
 
      <div class="form-group col-md-12">
-        <div class="col-sm-10 offset-sm-9">
-            <input type="submit" class="btn btn-primary" style="width: 15%" value="Submit">
-              <input type="reset" class="btn btn-secondary" style="width: 15%" value="Reset">
+        <div class="col-sm-10 offset-sm-8">
+            <input type="submit" class="btn btn-primary" style="width: 20%" value="Generate report">
+              {{--  <input type="reset" class="btn btn-secondary" style="width: 15%" value="Reset">  --}}
              </div>
           </div>
        </form>

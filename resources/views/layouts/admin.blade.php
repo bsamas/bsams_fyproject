@@ -154,7 +154,7 @@
     </a>
 </li>
 <li class="nav-item has-treeview">
-    <a href="#" class="nav-link">
+    <a href="attendance" class="nav-link">
         <i class="nav-icon fas fa-edit" style="font-size: 20px"></i>
         
         <span class="brand-text font-weight-light">Attendance Reports</span>

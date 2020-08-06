@@ -167,15 +167,15 @@
    </div>
 </div>
   <div class="form-row">
-     <div class="form-group col-md-5">
+     <div class="form-group col-md-3">
        <label>Email</label>
-          <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Enter your email" required>
+          <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Enter email" required>
              <div class="invalid-feedback">Please enter a valid email address.</div>
               </div>
-               <div class="form-group col-md-2">
+               <div class="form-group col-md-4">
                 <label>Year of study </label>
              <select id="inputYearOfStudy" class="form-control" name="year_of_study" required>
-            <option value="">Select year of study</option>
+            <option value="">Select year </option>
 
             <option value="2011">2011</option>
             <option value="2012">2012</option>
@@ -195,7 +195,7 @@
             </select>
            </div>
          <div class="form-group col-md-5">
-       <label for="inputPhonenumber">Phone number</label>
+       <label>Phone number</label>
      <input type="number" class="form-control" id="inputPhonenumber" name="phone_number" placeholder="Phone number" required>
     </div>
   </div>

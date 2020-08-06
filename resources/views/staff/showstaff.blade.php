@@ -115,9 +115,9 @@
                 <label for="inputType">Type </label>
              <select id="inputType" class="form-control" name="type" required>
             <option value="">Type of staff</option>
-            <option value="Lecturer">Lecturer</option>
-            <option value="Lab assistant">Lab assistant</option>
-            <option value="Seminar leader">Seminar leader</option>
+             <option value="Lecturer">Lecturer</option>
+            <option value="Assistant">Assistant</option>
+            <option value="SemLeader">SemLeader</option>
                </select>
            </div>
            <div class="form-group col-md-3">
@@ -238,7 +238,7 @@
             <select name="department_id" class="form-control" required>
             // this loops the department details from the table department
            @foreach($departments as $department)
-         <option value="{{$department->id}}">{{$department->name}}</option>
+         <option value="{{$department->name}}">{{$department->name}}</option>
 
               @endforeach
             </select>
@@ -258,12 +258,12 @@
              <select id="inputType" class="form-control" name="type" required>
             <option value="">Type of staff</option>
             <option value="Lecturer">Lecturer</option>
-            <option value="Lab assistant">Lab assistant</option>
-            <option value="Seminar leader">Seminar leader</option>
+            <option value="Assistant">Assistant</option>
+            <option value="SemLeader">SemLeader</option>
                </select>
            </div>
            <div class="form-group col-md-3">
-       <label for="inputEmail">Email</label>
+       <label>Email</label>
           <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Enter email" required>
              <div class="invalid-feedback">Please enter a valid email address.</div>
               </div>
