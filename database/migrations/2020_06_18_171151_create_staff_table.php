@@ -22,7 +22,7 @@ class CreateStaffTable extends Migration
             $table->string('type');
             $table->string('email')->unique();
             $table->string('phone_number')->unique();
-            $table->bigInteger('department_id');
+            $table->integer('department_id');
             $table->string('username');
             $table->string('password');
             $table->softDeletes();

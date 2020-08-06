@@ -46,13 +46,15 @@
               <td>{{ $staff->gender }}</td>
               <td>{{ $staff->type }}</td>
               {{--  //how to print foreign key details//  --}}
-              <td>{{ $staff->department_name}}</td>
+              <td>{{ $staff->department_id}}</td>
               <td>{{ $staff->phone_number }}</td>
               <td>{{ $staff->email }}</td>
               <td>{{ $staff->username }}</td>
               <td>
-                <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit_staff">Edit</a>
-                <a href="#" type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{ ($staff->staff_number)}}1">Delete</a>
+                <a href="#" type="button" class="btn btn-link" data-toggle="modal" data-target="#edit_staff">
+                           <i class="nav-icon fas fa-edit" ></i></a>
+                <a href="#" type="button" class="btn btn-link" data-toggle="modal" data-target="#{{ ($staff->staff_number)}}1">
+                    <i class="fa fa-trash" aria-hidden="true"></i></a>
               </td>
 
 
@@ -228,17 +230,21 @@
       <input type="text" class="form-control" id="inputLastname" name="last_name" placeholder=" Last name" required>
    </div>
 </div>
+
+
   <div class="form-group row">
      <div class="form-group col-md-3">
         <label>Department</label>
             <select name="department_id" class="form-control" required>
             // this loops the department details from the table department
            @foreach($departments as $department)
-         <option value="{{$department->id}}">{{$department->department_name}}</option>
+         <option value="{{$department->id}}">{{$department->name}}</option>
 
               @endforeach
             </select>
             </div>
+
+
                  <div class="form-group col-md-3">
                     <label for="inputGender">Gender</label>
                   <select id="inputGender" class="form-control" name="gender" required>

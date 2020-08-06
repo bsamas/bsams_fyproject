@@ -17,7 +17,7 @@
          <div class="form-group row">
             <div class="form-group col-md-12">
                <label for="inputDepartment">Department Name</label>
-                 <input type="text" class="form-control" id="inputDepartment" name="department_name" placeholder="Enter department name" required>
+                 <input type="text" class="form-control" id="inputDepartment" name="name" placeholder="Enter department name" required>
                </div>
          </div>
 

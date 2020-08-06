@@ -40,4 +40,6 @@ class Staff extends Model
         // referencing foreign key from department//
         return $this->belongsTo(department::class,'department_id'); 
     }
+
+    
 }

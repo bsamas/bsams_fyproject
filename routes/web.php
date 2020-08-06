@@ -33,13 +33,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 //routes for student details#
 
 
-Route::get('/ student', function() {
-    return view('student.student');
-});
+Route::get('/student', ['uses'=>'StudentController@getAllStudents']);
 
-Route::post('/Studentpost', 'StudentController@postStudent');
-Route::get('/viewstudent', 'StudentController@getAllStudents')->name('viewstudent');
-
+Route::post('/student', ['uses'=>'StudentController@postStudent']);
+// Route::get('/viewstudent', 'StudentController@getAllStudents')->name('viewstudent');
+Route::post('/edit_student/{id}', 'StudentController@editStudent');
+Route::get('/delete_student/{id}', 'StudentController@delete');
 
 //staff routes
 Route::get('/staff', ['uses'=>'StaffController@getAllStaff']);
@@ -50,16 +49,14 @@ Route::get('/showstaff', 'StaffController@getAllstaff')->name('showstaff');
 
 Route::get('/course', ['uses'=>'CourseController@getAllCourses']);
 
-Route::post('/postcourse', 'CourseController@postCourse');
-Route::get('/coursedetails', 'CourseController@getAllCourses')->name('course');
+Route::post('/course', ['uses' => 'CourseController@postCourse']);
 Route::post('/edit_course/{id}', 'CourseController@editCourse');
 Route::get('/delete_course/{id}', 'CourseController@delete');
 
 
 Route::get('/department', ['uses'=>'DepartmentController@getAllDepartments']);
 
-Route::post('/postdepartment', 'DepartmentController@postDepartment');
-Route::get('/registereddepartment', 'DepartmentController@getAllDepartments')->name('registereddepartment');
+Route::post('/department', ['uses'=>'DepartmentController@postDepartment']);
 Route::post('/edit_department/{id}', 'DepartmentController@edit');
 Route::get('/delete_department/{id}', 'DepartmentController@delete');
 

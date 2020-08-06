@@ -29,21 +29,21 @@ class DepartmentController extends Controller
     
     public function postDepartment(Request $request)
     {
-        $department_name = $request->input('department_name');
+        $name = new Department;
 
         // logic that check if the department exists but deleted then restore instead of dublicating
-$check = Department::where('department_name', $department_name)->where('deleted_at', '!=', null)->withTrashed();
+$check = Department::where('name', $name)->where('deleted_at', '!=', null)->withTrashed();
 
         if($check->exists()){
              $check->first()->restore();
 
-            return redirect('/registereddepartment')->with('message', 'department submitted');
+            return redirect('/department')->with('message', 'department submitted');
 
         }
         // $validator=Validator::make($request->all(),
         // [
 
-        //     'department_name'=>'required | unique:departments'
+        //     'name'=>'required | unique:departments'
 
         // ]);
         // if($validator->fails()){
@@ -53,19 +53,19 @@ $check = Department::where('department_name', $department_name)->where('deleted_
         //     ],404);
         // }
         else{
-            if(Department::where('department_name', $department_name)->exists()){
-                return redirect('/registereddepartment')->with('error', 'department exists ');
+            if(Department::where('name', $name)->exists()){
+                return redirect('/department')->with('error', 'department exists ');
             }
             else{
 
-                $department=new Department;
-                 $department->department_name=$request->input('department_name');
+                $department = new Department;
+                 $department->name=$request->input('name');
 
 
                  $department->save();
 
                  // return response()->json(['department' => $department],200);
-                 return redirect('/registereddepartment')->with('message', 'department added successfully ');
+                 return redirect('/department')->with('message', 'department added successfully ');
             }
         }
     }
@@ -74,7 +74,7 @@ $check = Department::where('department_name', $department_name)->where('deleted_
 
           $validator=Validator::make($request->all(),
         [
-            'department_name'=>'required'
+            'name'=>'required'
         ]);
 
 
@@ -90,7 +90,7 @@ $check = Department::where('department_name', $department_name)->where('deleted_
 
         $department->update([
 
-            'department_name'=> $request->department_name,
+            'name'=> $request->name,
 
 
         ]);
@@ -114,14 +114,14 @@ $check = Department::where('department_name', $department_name)->where('deleted_
     public function edit($id, Request $request){
 
         $department = Department::where('id', $id)->first();
-        $department->department_name = $request->input('department_name');
+        $department->name = $request->input('name');
         $department->save();
 
-        return redirect('/registereddepartment')->with('message', 'department updated successfully');
+        return redirect('/department')->with('message', 'department updated successfully');
     }
 
     public function delete($id){
         Department::find($id)->delete();
-        return redirect('/registereddepartment')->with('message', 'department deleted successfully');
+        return redirect('/department')->with('message', 'department deleted successfully');
     }
 }

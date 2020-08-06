@@ -51,13 +51,13 @@ $check = Course::where('code', $code)->where('deleted_at', '!=', null)->withTras
 
         if($check->exists()){
              $check->first()->restore();
-            return redirect('/coursedetails')->with('message', 'course submitted');
+            return redirect('/course')->with('message', 'course submitted');
 
         }
 
         else{
             if($validator->fails()){
-                return redirect('/coursedetails')->with('message', 'course already exists ');
+                return redirect('/course')->with('message', 'course already exists ');
             }
             else{
 
@@ -70,7 +70,7 @@ $check = Course::where('code', $code)->where('deleted_at', '!=', null)->withTras
         
                  $courses->save();
 
-                 return redirect('/coursedetails')->with('message', 'course added successfully ');
+                 return redirect('/course')->with('message', 'course added successfully ');
             }
         }
     }
@@ -120,14 +120,14 @@ $check = Course::where('code', $code)->where('deleted_at', '!=', null)->withTras
 
 
         if($validator->fails())
-            return redirect('/coursedetails')->with([
+            return redirect('/course')->with([
                 'error'=>$validator->errors(),
                 'message'=>$validator->errors()->first()
             ],404);
 
         $courses = Course::find($id);
 
-        if(!$courses)  return redirect('/coursedetails')->with(['error'=>'course not found']);
+        if(!$courses)  return redirect('/course')->with(['error'=>'course not found']);
 
         $courses->update([
             'code'=> $request->code,
@@ -142,7 +142,7 @@ $check = Course::where('code', $code)->where('deleted_at', '!=', null)->withTras
         // $courses->update($request->all());
         $courses->save();
 
-        return redirect('/coursedetails')->with('message', 'course updated successfully');
+        return redirect('/course')->with('message', 'course updated successfully');
     }
 
 
@@ -172,7 +172,7 @@ $check = Course::where('code', $code)->where('deleted_at', '!=', null)->withTras
 
     public function delete($id){
         Course::find($id)->delete();
-        return redirect('/coursedetails')->with('message', 'course deleted successfully');
+        return redirect('/course')->with('message', 'course deleted successfully');
     }
 }
 

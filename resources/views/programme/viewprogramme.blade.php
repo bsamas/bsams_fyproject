@@ -34,6 +34,8 @@
         </th>
         <th class="th-sm">Name
         </th>
+        <th class="th-sm">Department
+        </th>
         <th class="th-sm">Action
         </th>
     </tr>
@@ -47,20 +49,23 @@
 <tr>
 <td>{{ ($programme->id) }}</td>
 <td>{{ $programme->name}}</td>
+<td>{{ $programme->department_id}}</td>
 <td>
-    <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ ($programme->name) }}">Edit</a>
-    <a href="#" type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{ ($programme->name) }}1">Delete</a>
+    <a href="#" type="button" class="btn btn-link" data-toggle="modal" data-target="#edit_programme" data-programme="{{ ($programme) }}">
+        <i class="nav-icon fas fa-edit" ></i></a>
+    <a href="#" type="button" class="btn btn-link" data-toggle="modal" data-target="#delete_programme" data-programme="{{ ($programme) }}">
+        <i class="fa fa-trash" aria-hidden="true"></i></a>
 
 </td>
 
 
 
 {{-- //===Modal for edit button pop up===// --}}
-<div class="modal fade" id="{{ ($programme->name) }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="edit_programme" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Programme Details</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -69,10 +74,20 @@
         @csrf
       <div class="modal-body">
             <div class="form-group">
-                <label for="formGroupInput">Name</label>
-                <input type="text" name="name" class="form-control" id="formGroupInput"  value="<?php echo $programme->name; ?>">
+                <label>Name</label>
+                <input type="text" name="name" class="form-control" id="edit_name"  value="<?php echo $programme->name; ?>">
             </div>
 
+             <div class="form group">
+                <label>Department</label>
+                <select class="form-control" id="edit_department" name="department_id" required>
+                <option value="">Select programme</option>
+                @foreach ($departments as $department)
+                <option value="{{$department->name}}">{{$department->name}}</option>
+                @endforeach
+                </select>
+                    
+      </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -86,11 +101,11 @@
 
 
 {{-- //====delete modal pop up button===// --}}
-<div class="modal fade" id="{{ ($programme->name) }}1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="delete_programme" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Programme Details</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -129,7 +144,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Programme Details</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -142,6 +157,15 @@
                 <input type="text" name="name" class="form-control" id="formGroupExampleInput" placeholder="add new">
             </div>
 
+             <div class="form group">
+                <label>Department</label>
+                <select class="form-control" id="department" name="department_id" required>
+                <option value="">Select programme</option>
+                @foreach ($departments as $department)
+                <option value="{{$department->name}}">{{$department->name}}</option>
+                @endforeach
+                </select>
+                    </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -152,4 +176,28 @@
   </div>
  </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    $('#edit_programme').on('show.bs.modal', function(event){
+        var button = $(event.relatedTarget)
+        var programme = button.data('programme')
+        console.log(programme)
+        var modal = $(this)
+        modal.find('#edit_name').val(programme['name'])
+        modal.find('#edit_department').val(programme['department_id'])
+
+    })
+</script>
+
+<script>
+    $('#delete_programme').on('show.bs.modal', function(event){
+        var button = $(event.relatedTarget)
+        var programme = button.data('programme')
+        console.log(programme)
+      
+
+    })
+</script>
 @endsection

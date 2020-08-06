@@ -11,7 +11,7 @@ class Department extends Model
     use SoftDeletes;
 
     protected $fillable=[
-        'department_name'
+        'name'
     ];
 
      protected  $dates=[

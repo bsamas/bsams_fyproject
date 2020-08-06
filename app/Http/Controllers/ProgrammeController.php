@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Department;
 use App\Programme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -11,8 +12,9 @@ class ProgrammeController extends Controller
     public function getAllProgrammes()
     {
         $programmes = Programme::all();
+        $departments = Department::all();
         // return response()->json(['programmes' => $programmes]);
-        return view('programme.viewprogramme', compact('programmes'));
+        return view('programme.viewprogramme', compact('programmes', "departments"));
     }
 
     public function getSingleProgramme($programmeId)
@@ -36,7 +38,7 @@ class ProgrammeController extends Controller
        $name = $request->input('name');
 
         // logic that check if the programme exists but deleted then restore instead of dublicating
-$check = Programme::where('name', $name)->where('deleted_at', '!=', null)->withTrashed();
+     $check = Programme::where('name', $name)->where('deleted_at', '!=', null)->withTrashed();
 
         if($check->exists()){
              $check->first()->restore();
@@ -53,6 +55,7 @@ $check = Programme::where('name', $name)->where('deleted_at', '!=', null)->withT
 
                 $programme=new programme;
                  $programme->name=$request->input('name');
+                 $programme->department_id=$request->input('department_id');
 
 
                  $programme->save();
@@ -128,6 +131,8 @@ $check = Programme::where('name', $name)->where('deleted_at', '!=', null)->withT
     public function edit($id, Request $request){
          $programme = Programme::where('id', $id)->first();
         $programme->name = $request->input('name');
+         $programme->department_id=$request->input('department_id');
+
         $programme->save();
 
         return redirect('/viewprogramme')->with('message', 'programme updated successfully');

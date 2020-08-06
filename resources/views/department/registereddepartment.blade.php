@@ -46,21 +46,23 @@
 @foreach ($departments as $department)
 <tr>
 <td>{{ ($department->id) }}</td>
-<td>{{ $department->department_name}}</td>
+<td>{{ $department->name}}</td>
 <td>
-    <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ ($department->department_name) }}">Edit</a>
-    <a href="#" type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{ ($department->department_name) }}1">Delete</a>
+    <a href="#" type="button" class="btn btn-link" data-toggle="modal" data-target="#edit_department" data-department="{{ ($department) }}">
+         <i class="nav-icon fas fa-edit" ></i></a>
+    <a href="#" type="button" class="btn btn-link" data-toggle="modal" data-target="#delete_department" data-department="{{ ($department) }}">
+        <i class="fa fa-trash" aria-hidden="true"></i></a>
 
 </td>
 
 
 
 {{-- //===Modal for edit button pop up===// --}}
-<div class="modal fade" id="{{ ($department->department_name) }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="edit_department" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Department Details</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -69,8 +71,8 @@
         @csrf
       <div class="modal-body">
             <div class="form-group">
-                <label for="formGroupInput">Department Name</label>
-                <input type="text" name="department_name" class="form-control" id="formGroupInput"  value="<?php echo $department->department_name; ?>" required>
+                <label>Department Name</label>
+                <input type="text" name="name" class="form-control" id="edit_name"  value="<?php echo $department->department_name; ?>" required>
             </div>
 
       </div>
@@ -86,11 +88,11 @@
 
 
 {{-- //====delete modal pop up button===// --}}
-<div class="modal fade" id="{{ ($department->department_name) }}1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="delete_department" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Department Details</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -100,7 +102,7 @@
       {{-- ///===alert alert- =     ===/// --}}
       <div class="modal-body">
             <div>
-                <p> Are you sure you want to delete <strong class="text-danger"><?php echo $department->department_name; ?></strong>?</p>
+                <p> Are you sure you want to delete <strong class="text-danger"><?php echo $department->name; ?></strong>?</p>
             </div>
 
       </div>
@@ -129,17 +131,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Department Details</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action='{{url("/postdepartment")}}' method="POST">
+      <form action='{{url("/department")}}' method="POST">
         @csrf
       <div class="modal-body">
             <div class="form-group">
                 <label for="formGroupExampleInput">Department Name</label>
-                <input type="text" name="department_name" class="form-control" id="formGroupExampleInput" placeholder="add new">
+                <input type="text" name="name" class="form-control" id="formGroupExampleInput" placeholder="add new">
             </div>
 
       </div>
@@ -154,3 +156,25 @@
 </div>
 @endsection
 
+@section('scripts')
+<script>
+    $('#edit_department').on('show.bs.modal', function(event){
+        var button = $(event.relatedTarget)
+        var department = button.data('department')
+        console.log(department)
+        var modal = $(this)
+        
+        modal.find('#edit_name').val(department['name'])
+
+    })
+</script>
+
+<script>
+    $('#delete_department').on('show.bs.modal', function(event){
+        var button = $(event.relatedTarget)
+        var department = button.data('department')
+        console.log(department)
+      
+    })
+</script>
+@endsection

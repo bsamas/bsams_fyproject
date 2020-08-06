@@ -47,17 +47,17 @@
 <tr>
 <td>{{ ($course->id) }}</td>
 <td>{{ $course->code}}</td>
-<td>{{ ($course->course_name) }}</td>
+<td>{{ ($course->course_name) }}</td> 
 <td>{{ ($course->programme_id) }}</td>
 <td>{{ $course->semester}}</td>
 <td>{{ ($course->class) }}</td>
 <td>
-    <a href="#" type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit_course" data-course="{{ ($course) }}">Edit</a>
-    <a href="#" type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{ ($course->code) }}1">Delete</a>
+    <a href="#" type="button" class="btn btn-link" data-toggle="modal" data-target="#edit_course" data-course="{{ ($course) }}">
+        <i class="nav-icon fas fa-edit"></i></a>
+    <a href="#" type="button" class="btn btn-link" data-toggle="modal" data-target="#{{ ($course->code) }}1">
+        <i class="fa fa-trash" aria-hidden="true"></i></a>
 
 </td>
-
-
 
 
 
@@ -107,7 +107,7 @@
             <span aria-hidden="true">&times;</span>
            </button>
         </div>
-      <form action='{{url("/postcourse")}}' method="POST">
+      <form action='{{url("/course")}}' method="POST">
         {{csrf_field()}}
       <div class="modal-body">
                <div class="form group">
@@ -193,10 +193,10 @@
 
                           <div class="form group">
                                   <label>Programme</label>
-                                  <select class="form-control" id="programme" name="programme_id" required>
+                                  <select class="form-control" id="edit_programme" name="programme_id" required>
                                   <option value="">Select programme</option>
                                   @foreach ($programmes as $programme)
-                                  <option value="{{$programme->id}}">{{$programme->name}}</option>
+                                  <option value="{{$programme->name}}">{{$programme->name}}</option>
                                   @endforeach
                                   </select>
                               </div>
@@ -246,7 +246,7 @@
         modal.find('#course_name').val(course['course_name'])
         modal.find('#edit_semester').val(course['semester'])
         modal.find('#edit_class').val(course['class'])
-        modal.find('#programme').val(course['programme'])
+        modal.find('#edit_programme').val(course['programme_id'])
 
     })
 </script>

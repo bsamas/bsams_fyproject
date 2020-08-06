@@ -148,7 +148,7 @@
 </li>
 
 <li class="nav-item has-treeview">
-    <a href="#" class="nav-link">
+    <a href="student" class="nav-link">
         <i class="fa fa-graduation-cap" aria-hidden="true"></i
               <span class="brand-text font-weight-light">Student Informations</span>
     </a>
@@ -156,6 +156,7 @@
 <li class="nav-item has-treeview">
     <a href="#" class="nav-link">
         <i class="nav-icon fas fa-edit" style="font-size: 20px"></i>
+        
         <span class="brand-text font-weight-light">Attendance Reports</span>
     </a>
 </li>
@@ -213,7 +214,6 @@
       <!-- /.sidebar-menu -->
 
 
-
     <!-- /.sidebar -->
   </aside>
 
@@ -224,19 +224,18 @@
 
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
+  <footer class="main-footer" style="width:">
     <strong> Copyright &copy; Biometric student attendance management system</strong>
           All rights reserved.
-   
   </footer>
 
-  <!-- Control Sidebar -->
+  {{--  <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
 </div>
-<!-- ./wrapper -->
+<!-- ./wrapper -->  --}}
 
 <!-- jQuery -->
 <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>

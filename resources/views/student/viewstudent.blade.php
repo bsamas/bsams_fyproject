@@ -11,42 +11,29 @@
                 <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
        <tr>
-        <th class="th-sm">Id
+        <th class="th-sm">Id</th>
 
-        </th>
-        <th class="th-sm">RegNo
-        </th>
+        <th class="th-sm">RegNo</th>
         
-        <th class="th-sm">Fingerprint
-        </th>
-        <th class="th-sm">Fname
+        <th class="th-sm">Fingerprint</th>
+    
+        <th class="th-sm">Fname</th>
+        
+        <th class="th-sm">Mname</th>        
+    
+        <th class="th-sm">Lname</th>
+    
+        <th class="th-sm">Gender</th>
+               
+        <th class="th-sm">DOB</th>
 
-        </th>
-        <th class="th-sm">Mname
+        <th class="th-sm">YOS</th>
 
-        </th>
-        <th class="th-sm">Lname
+        <th class="th-sm">PhoneNo</th>
 
-        </th>
-        <th class="th-sm">Gender
+        <th class="th-sm">Email</th>
 
-        </th>
-        </th>
-        <th class="th-sm">DOB
-
-        </th>
-        </th>
-        <th class="th-sm">YOS
-
-        </th>
-        </th>
-        <th class="th-sm">PhoneNo
-
-        </th>
-        </th>
-        <th class="th-sm">Email
-
-        </th>
+        
       </tr>
     </thead>
 

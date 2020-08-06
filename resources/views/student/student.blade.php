@@ -1,144 +1,140 @@
-{{--  @extends('layouts.admin')
-@section('content')
-
-<body>
-<div class="container">
- @if(session('message'))
-{{session('message')}}
-@endif
-<div style="text-align: center; font-size: 2em"
-    <h1>STUDENT REGISTRATION FORM</h1></div>
-      <form class="bsams-validation" action="{{ url ('/Studentpost')}}" method="post">
-        @csrf
-         <div class="form-row">
-            <div class="form-group col-md-6">
-               <label for="inputRegno">RegNumber</label>
-                 <input type="text" class="form-control" id="inputRegno" name="reg_number" placeholder="Enter registration number" required>
-               </div>
-           <div class="form-group col-md-6">
-         <label for="inputFirstname">First name</label>
-      <input type="text" class="form-control" id="inputFirstname" name="first_name" placeholder="Enter first name" required>
-  </div>
-</div>
-  <div class="form-row">
-     <div class="form-group col-md-6">
-        <label for="inputMiddlename">Middle name</label>
-          <input type="text" class="form-control" id="inputMiddlename" name="middle_name" placeholder="Enter middle name" required>
-              </div>
-            <div class="form-group col-md-6">
-         <label for="inputLastname">Last name </label>
-      <input type="text" class="form-control" id="inputLastname" name="last_name" placeholder="Enter last name" required>
-   </div>
-</div>
-  <div class="form-row">
-     <div class="form-group col-md-6">
-        <label for="inputDatefBbirth">Date of birth</label>
-           <input type="date" class="form-control datepicker" id="inputDateOfBirth" name="date_of_birth" placeholder="Enter your birth date" required>
-              </div>
-                 <div class="form-group col-md-6">
-                    <label for="inputGender">Gender</label>
-                  <select id="inputGender" class="form-control" name="gender" required>
-               <option value="">Select gender</option>
-           <option value="male">male</option>
-        <option value="female">female</option>
-      </select>
-   </div>
-</div>
-  <div class="form-row">
-     <div class="form-group col-md-4">
-       <label for="inputEmail">Email</label>
-          <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Enter your email" required>
-             <div class="invalid-feedback">Please enter a valid email address.</div>
-              </div>
-               <div class="form-group col-md-4">
-                <label for="inputYearOfStudy">Year of study </label>
-             <select id="inputYearOfStudy" class="form-control" name="year_of_study" required>
-            <option value="">Select year of study</option>
-            <option value="2000">2000</option>
-            <option value="2001">2001</option>
-            <option value="2002">2002</option>
-            <option value="2003">2003</option>
-            <option value="2004">2004</option>
-            <option value="2005">2005</option>
-            <option value="2006">2006</option>
-            <option value="2007">2007</option>
-            <option value="2008">2008</option>
-            <option value="2009">2009</option>
-            <option value="2010">2010</option>
-            <option value="2011">2011</option>
-            <option value="2012">2012</option>
-            <option value="2013">2013</option>
-            <option value="2014">2014</option>
-            <option value="2015">2015</option>
-            <option value="2016">2016</option>
-            <option value="2017">2017</option>
-            <option value="2018">2018</option>
-            <option value="2019">2019</option>
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>
-            <option value="2023">2023</option>
-            <option value="2024">2024</option>
-            <option value="2025">2025</option>
-            </select>
-           </div>
-         <div class="form-group col-md-4">
-       <label for="inputPhonenumber">Phone number</label>
-     <input type="number" class="form-control" id="inputPhonenumber" name="phone_number" placeholder="Phone number" required>
-</div>
-  </div> &nbsp;
-     <div class="form-group col-md-12">
-        <div class="col-sm-9 offset-sm-10">
-           <input type="submit" class="btn btn-primary" value="Submit">
-              <input type="reset" class="btn btn-secondary" value="Reset">
-             </div>
-          </div>
-       </form>
-   </div>
-<script>
-    // Self-executing function
-(function() {
-    'use strict';
-    window.addEventListener('load', function() {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.getElementsByClassName('bsams-validation');
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
-        });
-    }, false);
-})();
-</script>
-</body>
-@endsection
-@section('scripts')  --}}
-
 @extends('layouts.admin')
-@section('content')
-<body>
- @if(session('message'))
-{{session('message')}}
-@endif
-<div class="container">
-<div class="row justify-content-center">
-<div class="col-md-12">
-<div class="card">
-<div class="card-body">
-<div style="text-align: center; font-size: 2em">
 
-    <h4>STUDENT REGISTRATION FORM</h4></div>
-    <hr>
-      <form class="bsams-validation" action="{{ url ('/Studentpost')}}" method="post">
-        @csrf
-         <div class="form-row">
-            <div class="form-group col-md-6">
-               <label for="inputRegno">RegNumber</label>
+@section('content')
+@if(session('message'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {{session('message')}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+@elseif(session('error'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  {{session('error')}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+@endif
+
+<div class="container">
+
+            {{-- ///== the add pop up button====// --}}
+                <div class="col-md-3 p-3">
+                    <button class="btn btn-primary"  data-toggle="modal" data-target="#add">Add New</button>
+                </div>
+
+
+  <table id="data" class="table table-bordered" cellspacing="0" width="100%">
+     <thead class="thead-light">
+              <tr>
+        <th scope="col">Id</th>
+
+        <th scope="col">RegNo</th>
+        
+        {{--  <th scope="col">Fingerprint</th>  --}}
+    
+        <th scope="col">Fname</th>
+        
+        <th scope="col">Mname</th>        
+    
+        <th scope="col">Lname</th>
+    
+        <th scope="col">Gender</th>
+               
+        <th scope="col">DOB</th>
+
+        <th scope="col">YOS</th>
+
+        <th scope="col">PhoneNo</th>
+
+        <th scope="col">Email</th>
+        <th scope="col">Action</th>
+
+              </tr>
+            </thead>
+
+{{-- //=====check the list of student if its greater than 0 then can be displayed.====// --}}
+
+@if(count($students) > 0)
+@foreach ($students as $student)
+<tr>
+<td>{{ $student->id }}</td>
+<td>{{ $student->reg_number}}</td>
+{{--  <td>{{ $student->fingerprint}}</td>  --}}
+<td>{{ $student->first_name }}</td>
+<td>{{ $student->middle_name }}</td>
+<td>{{ $student->last_name }}</td>
+<td>{{ $student->gender }}</td>
+<td>{{ $student->date_of_birth }}</td>
+<td>{{ $student->year_of_study}}</td>
+<td>{{ $student->phone_number }}</td>
+<td>{{ $student->email }}</td>
+<td>
+    <a href="#" type="button" class="btn btn-link" data-toggle="modal" data-target="#edit_student" data-student="{{ ($student) }}">
+        <i class="nav-icon fas fa-edit" ></i>
+    </a>
+    <a href="#" type="button" class="btn btn-link" data-toggle="modal" data-target="#{{ ($student->reg_number) }}1">
+         <i class="fa fa-trash" aria-hidden="true"></i></a>
+
+</td>
+
+
+
+{{-- //====start delete modal pop up button===// --}}
+<div class="modal fade" id="{{ ($student->reg_number) }}1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">STUDENT DETAILS</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+
+      {{-- ///===alert alert- =     ===/// --}}
+      <div class="modal-body">
+            <div>
+                <p> Are you sure you want to delete <strong class="text-danger"><?php echo $student->reg_number; ?></strong>?</p>
+            </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+        <a href='{{url("/delete_student/{$student->id}")}}' class = "btn btn-danger">Delete</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+ {{--  //====end delete modal pop up button===//   --}}
+
+</tr>
+@endforeach
+@endif
+  </table>
+ </div>
+
+    <!-- Start adding student -->
+<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">STUDENT DETAILS</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+                </button>
+                    </div>
+                      <form action='{{url("/student")}}' method="POST">
+                        {{csrf_field()}}
+                         <div class="modal-body">
+                         <div class="form-row">
+                        <div class="form-group col-md-6">
+                    <label for="inputRegno">RegNumber</label>
                  <input type="text" class="form-control" id="inputRegno" name="reg_number" placeholder="Enter registration number" required>
                </div>
            <div class="form-group col-md-6">
@@ -148,21 +144,21 @@
 </div>
   <div class="form-row">
      <div class="form-group col-md-6">
-        <label for="inputMiddlename">Middle name</label>
+        <label>Middle name</label>
           <input type="text" class="form-control" id="inputMiddlename" name="middle_name" placeholder="Enter middle name" required>
               </div>
             <div class="form-group col-md-6">
-         <label for="inputLastname">Last name </label>
+         <label>Last name </label>
       <input type="text" class="form-control" id="inputLastname" name="last_name" placeholder="Enter last name" required>
    </div>
 </div>
   <div class="form-row">
      <div class="form-group col-md-6">
-        <label for="inputDatefBbirth">Date of birth</label>
+        <label>Date of birth</label>
            <input type="date" class="form-control datepicker" id="inputDateOfBirth" name="date_of_birth" placeholder="Enter your birth date" required>
               </div>
                  <div class="form-group col-md-6">
-                    <label for="inputGender">Gender</label>
+                    <label>Gender</label>
                   <select id="inputGender" class="form-control" name="gender" required>
                <option value="">Select gender</option>
            <option value="male">male</option>
@@ -171,13 +167,13 @@
    </div>
 </div>
   <div class="form-row">
-     <div class="form-group col-md-4">
-       <label for="inputEmail">Email</label>
+     <div class="form-group col-md-5">
+       <label>Email</label>
           <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Enter your email" required>
              <div class="invalid-feedback">Please enter a valid email address.</div>
               </div>
-               <div class="form-group col-md-4">
-                <label for="inputYearOfStudy">Year of study </label>
+               <div class="form-group col-md-2">
+                <label>Year of study </label>
              <select id="inputYearOfStudy" class="form-control" name="year_of_study" required>
             <option value="">Select year of study</option>
 
@@ -198,44 +194,146 @@
             <option value="2025">2025</option>
             </select>
            </div>
-         <div class="form-group col-md-4">
+         <div class="form-group col-md-5">
        <label for="inputPhonenumber">Phone number</label>
      <input type="number" class="form-control" id="inputPhonenumber" name="phone_number" placeholder="Phone number" required>
-</div>
+    </div>
   </div>
-     <div class="form-group col-md-12">
-        <div class="col-sm-10 offset-sm-9">
-            <input type="submit" class="btn btn-primary" style="width: 15%" value="Submit">
-              <input type="reset" class="btn btn-secondary" style="width: 15%" value="Reset">
-             </div>
-          </div>
-       </form>
+    </div>
+        <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+         </div>
+        </form>.
+    </div>
+  </div>
+</div>
+   <!-- End adding student -->
+
+
+
+ {{-- //===start edit button pop up===// --}}
+
+<div class="modal fade" id="edit_student" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">STUDENT DETAILS</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+                </button>
+                 </div>
+                      <form action='{{url("/edit_student/{id}")}}' method="POST">
+                        {{csrf_field()}}
+                            <div class="modal-body">
+                            <div class="form-row">
+                        <div class="form-group col-md-6">
+                    <label>RegNumber</label>
+                 <input type="text" class="form-control" id="regno" name="reg_number" placeholder="Enter registration number" required>
+               </div>
+           <div class="form-group col-md-6">
+         <label for="inputFirstname">First name</label>
+      <input type="text" class="form-control" id="firstname" name="first_name" placeholder="Enter first name" required>
+  </div>
+</div>
+  <div class="form-row">
+     <div class="form-group col-md-6">
+        <label for="inputMiddlename">Middle name</label>
+          <input type="text" class="form-control" id="middlename" name="middle_name" placeholder="Enter middle name" required>
+              </div>
+            <div class="form-group col-md-6">
+         <label for="inputLastname">Last name </label>
+      <input type="text" class="form-control" id="lastname" name="last_name" placeholder="Enter last name" required>
    </div>
 </div>
+  <div class="form-row">
+     <div class="form-group col-md-6">
+        <label>Date of birth</label>
+           <input type="date" class="form-control datepicker" id="date" name="date_of_birth" placeholder="Enter your birth date" required>
+              </div>
+                 <div class="form-group col-md-6">
+                    <label>Gender</label>
+                  <select id="gender" class="form-control" name="gender" required>
+               <option value="">Select gender</option>
+           <option value="male">male</option>
+        <option value="female">female</option>
+      </select>
+   </div>
 </div>
+  <div class="form-row">
+     <div class="form-group col-md-5">
+       <label>Email</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+             <div class="invalid-feedback">Please enter a valid email address.</div>
+              </div>
+               <div class="form-group col-md-2">
+                <label>Year of study </label>
+             <select id="year" class="form-control" name="year_of_study" required>
+            <option value="">Select year of study</option>
+
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+            </select>
+           </div>
+         <div class="form-group col-md-5">
+       <label>Phone number</label>
+     <input type="number" class="form-control" id="number" name="phone_number" placeholder="Phone number" required>
 </div>
+  </div>
+                </div>
+
+          <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+      </form>.
+    </div>
+  </div>
 </div>
 
-<script>
-    // Self-executing function
-(function() {
-    'use strict';
-    window.addEventListener('load', function() {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.getElementsByClassName('bsams-validation');
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
-        });
-    }, false);
-});
-</script>
-</div>
-</body>
+{{-- //===End edit button pop up===// --}}
 @endsection
+
+@section('scripts')
+<script>
+    $('#edit_student').on('show.bs.modal', function(event){
+        var button = $(event.relatedTarget)
+        var student = button.data('student')
+        console.log(student)
+        var modal = $(this)
+        modal.find('#regno').val(student['reg_number'])
+        modal.find('#firstname').val(student['first_name'])
+        modal.find('#middlename').val(student['middle_name'])
+        modal.find('#lastname').val(student['last_name'])
+        modal.find('#date').val(student['date_of_birth'])
+        modal.find('gender').val(student['gender'])
+        modal.find('#email').val(student['email'])
+        modal.find('#year').val(student['year_of_study'])
+        modal.find('#number').val(student['phone_number'])
+
+    })
+</script>
+
+@endsection
+
+
+
+
+
+
+
+
+

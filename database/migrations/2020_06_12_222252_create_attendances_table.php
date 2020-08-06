@@ -21,8 +21,8 @@ class CreateAttendancesTable extends Migration
             $table->string('time');
             $table->integer('count');
             $table->string('percentage');
-            $table->bigInteger('course_id');
-            $table->bigInteger('student_id');
+            $table->integer('course_id');
+            $table->integer('student_id');
             $table->softDeletes();
             $table->timestamps();
         });

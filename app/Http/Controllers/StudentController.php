@@ -11,7 +11,7 @@ class StudentController extends Controller
     public function getAllStudents()
     {
         $students = Student::all();
-        return view('student.viewstudent', compact('students'));
+        return view('student.student', compact('students'));
         // return response()->json(['students' => $students]);
     }
 
@@ -51,7 +51,7 @@ class StudentController extends Controller
         }
         $student=new Student();
         $student->reg_number=$request->input('reg_number');
-        $student->fingerprint=$request->input('fingerprint');
+        // $student->fingerprint=$request->input('fingerprint');
         $student->first_name=$request->input('first_name');
         $student->middle_name=$request->input('middle_name');
         $student->last_name=$request->input('last_name');
