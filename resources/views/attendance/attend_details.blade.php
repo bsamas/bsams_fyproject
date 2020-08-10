@@ -45,7 +45,7 @@
               <td>{{ $staff->last_name }}</td>
               <td>{{ $staff->gender }}</td>
               <td>{{ $staff->type }}</td>
-              {{--  //how to print foreign key details//  --}}
+              {{--  //how to print foreign key details//   --}}
               <td>{{ $staff->department->department_name}}</td>
               <td>{{ $staff->phone_number }}</td>
               <td>{{ $staff->email }}</td>
@@ -246,7 +246,7 @@
            <option value="male">male</option>
         <option value="female">female</option>
       </select>
-   </div>
+   </div>pghphlkkbl;fgklfk
     <div class="form-group col-md-3">
                 <label for="inputType">Type </label>
              <select id="inputType" class="form-control" name="type" required>
