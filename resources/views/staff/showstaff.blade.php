@@ -2,13 +2,13 @@
 
 @section('content')
 
-<div cl//a'''ss="container">
+<div class`="container">
 
         {{-- ///== the add pop up button====// --}}
       <div class="col-md-3 p-3">
              <button class="btn btn-primary"  data-toggle="modal" data-target="#add">Add New</button>
                 </div>
-                  <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="" width="100%">
+                  <table id="data" class="table table-striped table-bordered" cellspacing="" width="100%">
                       <thead>
                         <tr>
                           <th scope="col">Id</th>
@@ -128,19 +128,19 @@
 </div>
   <div class="form-row">
          <div class="form-group col-md-3">
-       <label for="inputPhonenumber">Number</label>
+       <label>Number</label>
      <input type="number" class="form-control" id="inputPhonenumber" name="phone_number" placeholder="Number" required>
 </div>
 <div class="form-group col-md-3">
-        <label for="inputUsername">Username</label>
+        <label>Username</label>
           <input type="text" class="form-control" id="inputUsername" name="username" placeholder="username" required>
               </div>
             <div class="form-group col-md-3">
-         <label for="inputPassword">Password </label>
+         <label>Password </label>
       <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" required>
    </div>
        <div class="form-group col-md-3">
-         <label for="inputPassword">Confirm</label>
+         <label>Confirm</label>
       <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
    </div>
   </div>
@@ -296,5 +296,15 @@
   </div>
 </div>
    <!-- End adding course -->
+
+@endsection
+
+@section('scripts')
+
+<script>
+$('document').ready(function(){
+  $('#data').DataTable();
+});
+</script>
 
 @endsection

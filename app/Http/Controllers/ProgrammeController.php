@@ -139,7 +139,11 @@ class ProgrammeController extends Controller
     }
 
     public function delete($id){
-        Programme::find($id)->delete();
+        $programme = Programme::find($id)->delete();
+
+        if (!$programme) return redirect('/viewprogramme')->with(['error' => 'programme not found']);
+
+        $programme->delete();
         return redirect('/viewprogramme')->with('message', 'programme deleted successfully');
     }
 

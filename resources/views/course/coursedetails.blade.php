@@ -250,6 +250,11 @@
 
     })
 </script>
+<script>
+$(document).ready(function(){
+  $('#data').DataTable();
+});
+</script>
 
 @endsection
 
