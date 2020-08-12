@@ -12,8 +12,11 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
+                {{--  background-blend-mode: screen;  --}}
+                background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url("{{asset('images/download.jpg')}}");
+                background-size: cover;
+                background-position: center;
+                                color: #fff;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
@@ -49,7 +52,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: #fff;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
@@ -80,6 +83,9 @@
             @endif
 
             <div class="content">
+                <div class="m-b-md">
+                  <img src="{{asset('images/logo_ud.png')}}" alt="" height="200"/>
+                </div>
                 <div class="title m-b-md">
                    Welcome to bsams
                 </div>

@@ -22,13 +22,11 @@
 <div class="container">
 
             {{-- ///== the add pop up button====// --}}
-                <div class="col-md-3 p-3">
-                    <button class="btn btn-primary"  data-toggle="modal" data-target="#add">Add New</button>
-                </div>
-
-
-  <table id="data" class="table table-bordered" cellspacing="0" width="100%">
-     <thead class="thead-light">
+<div class="col-md-3 p-3">
+    <button class="btn btn-primary"  data-toggle="modal" data-target="#add">Add New</button>
+        </div>
+          <table id="data" class="table table-bordered" cellspacing="0" width="100%">
+              <thead class="thead-light">
               <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Course Code</th>

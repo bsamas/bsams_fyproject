@@ -1,199 +1,213 @@
 @extends('layouts.admin')
 
 @section('content')
-
-<div class`="container">
-
-        {{-- ///== the add pop up button====// --}}
-      <div class="col-md-3 p-3">
-             <button class="btn btn-primary"  data-toggle="modal" data-target="#add">Add New</button>
-                </div>
-                  <table id="data" class="table table-striped table-bordered" cellspacing="" width="100%">
-                      <thead>
-                        <tr>
-                          <th scope="col">Id</th>
-
-                          <th scope="col">StNo</th>
-
-                          <th scope="col">FName</th>
-
-                          <th scope="col">LName</th>
-
-                          <th scope="col">Gender</th>
-
-                          <th scope="col">Type</th>
-
-                          <th scope="col">Department</th>
-
-                          <th scope="col">PhoneNo</th>
-
-                          <th scope="col">Email</th>
-
-                          <th scope="col">Username</th>
-
-                          <th scope="col">Action</th>
-
-                        </tr>
-                      </thead>
-
-        @if(count($staff) > 0)
-        @foreach ($staff as $staff)
-              <tr>
-              <td>{{ $staff->id }}</td>
-              <td>{{ $staff->staff_number}}</td>
-              <td>{{ $staff->first_name }}</td>
-              <td>{{ $staff->last_name }}</td>
-              <td>{{ $staff->gender }}</td>
-              <td>{{ $staff->type }}</td>
-              {{--  //how to print foreign key details//  --}}
-              <td>{{ $staff->department_id}}</td>
-              <td>{{ $staff->phone_number }}</td>
-              <td>{{ $staff->email }}</td>
-              <td>{{ $staff->username }}</td>
-              <td>
-                <a href="#" type="button" class="btn btn-link" data-toggle="modal" data-target="#edit_staff">
-                           <i class="nav-icon fas fa-edit" ></i></a>
-                <a href="#" type="button" class="btn btn-link" data-toggle="modal" data-target="#{{ ($staff->staff_number)}}1">
-                    <i class="fa fa-trash" aria-hidden="true"></i></a>
-              </td>
-
-
-{{-- //===start edit button pop up===// --}}
-<div class="modal fade" id="{{ ($staff->staff_number) }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">STAFF DETAILS</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+@if(session('message'))
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{session('message')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
       </div>
-      <form action="{{url('/Staffpost')}}" method="POST">
-        {{csrf_field()}}
-      <div class="modal-body">
-                  <div class="form-group row">
-            <div class="form-group col-md-6">
-               <label for="inputStaffno">StaffNumber</label>
-                 <input type="text" class="form-control" id="inputStaffno" name="staff_number" placeholder="Enter staff number" required>
-               </div>
-           <div class="form-group col-md-6">
-         <label for="inputFirstname">First name</label>
-      <input type="text" class="form-control" id="inputFirstname" name="first_name" placeholder="First name" required>
+@elseif(session('error'))
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{session('error')}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
   </div>
-</div>
-  <div class="form-group row">
-     <div class="form-group col-md-6">
-        <label for="inputMiddlename">Middle name</label>
-          <input type="text" class="form-control" id="inputMiddlename" name="middle_name" placeholder=" Middle name" required>
-              </div>
-            <div class="form-group col-md-6">
-         <label for="inputLastname">Last name </label>
-      <input type="text" class="form-control" id="inputLastname" name="last_name" placeholder=" Last name" required>
-   </div>
-</div>
-  <div class="form-group row">
-     <div class="form-group col-md-3">
-        <label for="inputDepartment">Department</label>
-            <select name="department" id="inputDepartment" class="form-control" required>
-             {{--  @foreach($departments as $staff)
-              <tr>
-              <td>{{$staff->id}}</td>
-              <td>{{$staff->department_name}}</td>
-              </tr>
-              @endforeach  --}}
-            </select>
-            </div>
-                 <div class="form-group col-md-3">
-                    <label for="inputGender">Gender</label>
-                  <select id="inputGender" class="form-control" name="gender" required>
-               <option value="">Select gender</option>
-           <option value="male">male</option>
-        <option value="female">female</option>
-      </select>
-   </div>
-    <div class="form-group col-md-3">
-                <label for="inputType">Type </label>
-             <select id="inputType" class="form-control" name="type" required>
-            <option value="">Type of staff</option>
-             <option value="Lecturer">Lecturer</option>
-            <option value="Assistant">Assistant</option>
-            <option value="SemLeader">SemLeader</option>
-               </select>
-           </div>
-           <div class="form-group col-md-3">
-       <label for="inputEmail">Email</label>
-          <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Enter email" required>
-             <div class="invalid-feedback">Please enter a valid email address.</div>
-              </div>
-</div>
-  <div class="form-row">
-         <div class="form-group col-md-3">
-       <label>Number</label>
-     <input type="number" class="form-control" id="inputPhonenumber" name="phone_number" placeholder="Number" required>
-</div>
-<div class="form-group col-md-3">
-        <label>Username</label>
-          <input type="text" class="form-control" id="inputUsername" name="username" placeholder="username" required>
-              </div>
-            <div class="form-group col-md-3">
-         <label>Password </label>
-      <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" required>
-   </div>
-       <div class="form-group col-md-3">
-         <label>Confirm</label>
-      <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
-   </div>
-  </div>
-
-
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
-      </form>.
-    </div>
-  </div>
-</div>
-{{-- //===End edit button pop up===// --}}
-
-
-{{-- //====start delete modal pop up button===// --}}
-<div class="modal fade" id="{{ ($staff->staff_number) }}1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">STAFF DETAILS</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-
-      {{-- ///===alert alert- =     ===/// --}}
-      <div class="modal-body">
-            <div>
-                <p> Are you sure you want to delete <strong class="text-danger"><?php echo $staff->staff_number; ?></strong>?</p>
-            </div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-        <a href='{{url("/delete_staff/{$staff->staff_number}")}}' class = "btn btn-danger">Delete</a>
-      </div>
-
-    </div>
-  </div>
-</div>
- {{--  //====end delete modal pop up button===//   --}}
-
-</tr>
-@endforeach
 @endif
+<div class="container">
+  {{-- ///== the add pop up button====// --}}
+    <div class="col-md-3 p-3">
+      <button class="btn btn-primary"  data-toggle="modal" data-target="#add">Add New</button>
+    </div>
+  <table id="data" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+
+          <th scope="col">StNo</th>
+
+            <th scope="col">FName</th>
+
+              <th scope="col">LName</th>
+
+                <th scope="col">Gender</th>
+
+                  <th scope="col">Type</th>
+
+                <th scope="col">Department</th>
+
+              <th scope="col">PhoneNo</th>
+
+            <th scope="col">Email</th>
+
+          <th scope="col">Username</th>
+
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    @if(count($staff) > 0)
+
+      @foreach ($staff as $staff)
+        <tr>
+          <td>{{ $staff->id }}</td>
+            <td>{{ $staff->staff_number}}</td>
+              <td>{{ $staff->first_name }}</td>
+                <td>{{ $staff->last_name }}</td>
+                  <td>{{ $staff->gender }}</td>
+                    <td>{{ $staff->type }}</td>
+                    {{--  //how to print foreign key details//  --}}
+                <td>{{ $staff->department_id}}</td>
+              <td>{{ $staff->phone_number }}</td>
+            <td>{{ $staff->email }}</td>
+          <td>{{ $staff->username }}</td>
+          <td>
+            <a href="#" type="button" class="btn btn-link" data-toggle="modal" data-target="#edit_staff"> 
+              <i class="nav-icon fas fa-edit" ></i>
+            </a>
+            <a href="#" type="button" class="btn btn-link" data-toggle="modal" data-target="#{{ ($staff->staff_number)}}1">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </a>
+          </td>
+             {{-- //===start edit button pop up===// --}}
+          <div class="modal fade" id="{{ ($staff->staff_number) }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">STAFF DETAILS</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{url('/Staffpost')}}" method="POST">
+                  {{csrf_field()}}
+                    <div class="modal-body">
+                      <div class="form-group row">
+
+                          <div class="form-group col-md-6">
+                            <label for="inputStaffno">StaffNumber</label>
+                            <input type="text" class="form-control" id="inputStaffno" name="staff_number" placeholder="Enter staff number" required>
+                          </div>
+
+                        <div class="form-group col-md-6">
+                          <label for="inputFirstname">First name</label>
+                          <input type="text" class="form-control" id="inputFirstname" name="first_name" placeholder="First name" required>
+                        </div>
+                      </div>
+              <div class="form-group row">
+                <div class="form-group col-md-6">
+                    <label for="inputMiddlename">Middle name</label>
+                      <input type="text" class="form-control" id="inputMiddlename" name="middle_name" placeholder=" Middle name" required>
+                          </div>
+                        <div class="form-group col-md-6">
+                    <label for="inputLastname">Last name </label>
+                  <input type="text" class="form-control" id="inputLastname" name="last_name" placeholder=" Last name" required>
+              </div>
+              </div>
+              <div class="form-group row">
+                <div class="form-group col-md-3">
+                    <label for="inputDepartment">Department</label>
+                        <select name="department" id="inputDepartment" class="form-control" required>
+                        {{--  @foreach($departments as $staff)
+                          <tr>
+                          <td>{{$staff->id}}</td>
+                          <td>{{$staff->department_name}}</td>
+                          </tr>
+                          @endforeach  --}}
+                        </select>
+                        </div>
+                            <div class="form-group col-md-3">
+                                <label for="inputGender">Gender</label>
+                              <select id="inputGender" class="form-control" name="gender" required>
+                          <option value="">Select gender</option>
+                      <option value="male">male</option>
+                    <option value="female">female</option>
+                  </select>
+              </div>
+                <div class="form-group col-md-3">
+                            <label for="inputType">Type </label>
+                        <select id="inputType" class="form-control" name="type" required>
+                        <option value="">Type of staff</option>
+                        <option value="Lecturer">Lecturer</option>
+                        <option value="Assistant">Assistant</option>
+                        <option value="SemLeader">SemLeader</option>
+                          </select>
+                      </div>
+                      <div class="form-group col-md-3">
+                  <label for="inputEmail">Email</label>
+                      <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Enter email" required>
+                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                          </div>
+              </div>
+              <div class="form-row">
+                    <div class="form-group col-md-3">
+                  <label>Number</label>
+                <input type="number" class="form-control" id="inputPhonenumber" name="phone_number" placeholder="Number" required>
+              </div>
+              <div class="form-group col-md-3">
+                    <label>Username</label>
+                      <input type="text" class="form-control" id="inputUsername" name="username" placeholder="username" required>
+                          </div>
+                        <div class="form-group col-md-3">
+                    <label>Password </label>
+                  <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" required>
+              </div>
+                  <div class="form-group col-md-3">
+                    <label>Confirm</label>
+                  <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+              </div>
+              </div>
+
+
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                  </div>
+                  </form>.
+                </div>
+              </div>
+              </div>
+              {{-- //===End edit button pop up===// --}}
+
+
+              {{-- //====start delete modal pop up button===// --}}
+              <div class="modal fade" id="{{ ($staff->staff_number) }}1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">STAFF DETAILS</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+
+                  {{-- ///===alert alert- =     ===/// --}}
+                  <div class="modal-body">
+                        <div>
+                            <p> Are you sure you want to delete <strong class="text-danger"><?php echo $staff->staff_number; ?></strong>?</p>
+                        </div>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                    <a href='{{url("/delete_staff/{$staff->staff_number}")}}' class = "btn btn-danger">Delete</a>
+                  </div>
+
+                </div>
+              </div>
+              </div>
+              {{--  //====end delete modal pop up button===//   --}}
+
+              </tr>
+              @endforeach
+              @endif
   </table>
- </div>
+</div>
 
 
 
@@ -210,7 +224,7 @@
       <form action="{{url('/Staffpost')}}" method="POST">
         {{csrf_field()}}
       <div class="modal-body">
-                  <div class="form-group row">
+          <div class="form-group row">
             <div class="form-group col-md-6">
                <label for="inputStaffno">StaffNumber</label>
                  <input type="text" class="form-control" id="inputStaffno" name="staff_number" placeholder="Enter staff number" required>
@@ -237,15 +251,12 @@
         <label>Department</label>
             <select name="department_id" class="form-control" required>
             // this loops the department details from the table department
-           @foreach($departments as $department)
-         <option value="{{$department->name}}">{{$department->name}}</option>
-
-              @endforeach
-            </select>
-            </div>
-
-
-                 <div class="form-group col-md-3">
+                  @foreach($departments as $department)
+                      <option value="{{$department->name}}">{{$department->name}}</option>
+                        @endforeach
+                        </select>
+                      </div>
+                     <div class="form-group col-md-3">
                     <label for="inputGender">Gender</label>
                   <select id="inputGender" class="form-control" name="gender" required>
                <option value="">Select gender</option>

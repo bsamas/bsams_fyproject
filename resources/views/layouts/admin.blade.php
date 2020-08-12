@@ -84,7 +84,7 @@
   <aside class="main-sidebar sidebar-dark-blue-primary elevation-4" >
     <!-- Brand Logo -->
     <a href="#" class="brand-link" style="background-color:rgb(60, 141, 188);">
-      <img src="#" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{asset('images/logo_ud.png')}}" alt="" class="brand-image img-circle elevation-3">
       <span class="brand-text font-weight-light" style="color:#ffff;">BIOMETRIC SAMS</span>
     </a>
 
