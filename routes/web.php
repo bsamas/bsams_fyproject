@@ -79,6 +79,7 @@ Route::get('/delete_department/{id}', 'DepartmentController@delete');
 
 
 Route::get('/attendance', ['uses'=>'AttendanceController@getAllAttendances']);
+Route::get('/report', ['uses'=>'AttendanceController@getAllReports']);
 
 
 

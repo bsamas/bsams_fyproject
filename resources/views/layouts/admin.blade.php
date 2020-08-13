@@ -153,12 +153,32 @@
               <span class="brand-text font-weight-light">Student Informations</span>
     </a>
 </li>
+
 <li class="nav-item has-treeview">
-    <a href="attendance" class="nav-link">
-        <i class="nav-icon fas fa-edit" style="font-size: 20px"></i>
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-edit"></i>
         
-        <span class="brand-text font-weight-light">Attendance Reports</span>
+        <span class="brand-text font-weight-light">Attendance Details</span>
     </a>
+    <ul class="nav nav-treeview">
+<li class="nav-item">
+     <a href="attendance" class="nav-link">
+          <i class="fa fa-building" aria-hidden="true"></i>
+          
+        <span class="brand-text font-weight-light">Attendance Register</span>
+    </a>
+</li>
+
+
+
+<li class="nav-item">
+    <a href="report" class="nav-link">
+       
+         <i class="fa fa-list-alt" aria-hidden="true"></i>
+         <span class="brand-text font-weight-light">Report</span>
+    </a>
+</li>
+</ul>
 </li>
 
 
@@ -212,7 +232,7 @@
     </ul>
 </nav>
       <!-- /.sidebar-menu -->
-
+     
 
     <!-- /.sidebar -->
   </aside>
@@ -224,7 +244,7 @@
 
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer" style="width:">
+  <footer class="main-footer">
     <strong> Copyright &copy; Biometric student attendance management system</strong>
           All rights reserved.
   </footer>

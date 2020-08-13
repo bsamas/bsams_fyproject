@@ -12,9 +12,18 @@ class AttendanceController extends Controller
     public function getAllAttendances()
     {
         $attendances = Attendance::all();
+        // $courses = Course::all();
+
+       
+        return view('attendance.attend_details', compact('attendances'));
+    }
+    public function getAllReports()
+    {
+        $attendances = Attendance::all();
         $courses = Course::all();
 
-        return view('attendance.report', compact('attendances', 'courses'));
+        return view('report.report', compact('attendances', 'courses'));
+      
     }
 
     public function getSingleAttendance($attendanceId)

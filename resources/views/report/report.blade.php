@@ -1,69 +1,64 @@
 @extends('layouts.admin')
 
 @section('content')
-
+<body>
+ @if(session('message'))
+{{session('message')}}
+@endif
 <div class="container">
-<div class="row justify-content-center">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-body">
-                <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="" width="100%">
-    <thead>
-       <tr>
-        <th class="th-sm">Id
+   <div class="row justify-content-center">
+     <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+{{-- <div style="text-align: center; font-size: 2em">
 
-        </th>
-        <th class="th-sm">RegNo
-
-        </th>
-        <th class="th-sm">CourseCode
-
-        </th>
-        <th class="th-sm">Type
-
-        </th>
-        <th class="th-sm">Status
-
-        </th>
-        <th class="th-sm">Date
-
-        </th>
-        </th>
-        <th class="th-sm">Time
-
-        </th>
-        </th>
-        <th class="th-sm">Count
-
-        </th>
-        </th>
-        <th class="th-sm">Percentage
-
-        </th>
-
-      </tr>
-    </thead>
+    <h4>STUDENT REGISTRATION FORM</h4></div>
+    <hr> --}}
+      <form action="{{ url ('/Studentpost')}}" method="post">
+        @csrf
+         <div class="form-row">
+            <div class="form-group col-md-6">
+               <label>Report Type</label>
+                 <select id="inputYearOfStudy" class="form-control" name="year_of_study" required>
+                  <option value="">select report type</option>
+                  <option value="Lecture session">Lecture session</option>
+                    <option value="Practical session">Practical session</option>
+                  <option value="Seminar session">Seminar session</option>
+                 </select>
+               </div>
+           <div class="form-group col-md-6">
+         <label> Course </label>
+      <select name="course_id" class="form-control" required>
+          @foreach ($courses as $course)
+         <option value="{{$course->course_id}}">{{$course->code}}</option>
+          @endforeach
+      </select>
+  </div>
+</div>
 
 
-    @foreach ($attendances as $attendance)
-<tr>
-<td>{{ $attendance->id }}</td>
-<td>{{ $attendance->Reg_number}}</td>
-<td>{{ $attendance->code }}</td>
-<td>{{ $attendance->type }}</td>
-<td>{{ $attendance->status }}</td>
-<td>{{ $attendance->date }}</td>
-<td>{{ $attendance->time }}</td>
-<td>{{ $attendance->count}}</td>
-<td>{{ $attendance->percentage }}</td>
+  <div class="form-row">
+     <div class="form-group col-md-6">
+        <label>Start Date</label>
+           <input type="date" class="form-control datepicker" id="inputDateOfBirth" name="date_of_birth" placeholder="Enter your birth date" required>
+              </div>
+                 <div class="form-group col-md-6">
+                  <label>End Date</label>
+           <input type="date" class="form-control datepicker" id="inputDateOfBirth" name="date_of_birth" placeholder="Enter your birth date" required>
+   </div>
+</div>
 
-</tr>
-@endforeach
-  </table>
-            </div>
-        </div>
-      </div>
-    </div>
-    </div>
-
+     <div class="form-group col-md-12">
+        <div class="col-sm-10 offset-sm-8">
+            <input type="submit" class="btn btn-primary" style="width: 20%" value="Generate report">
+              {{--  <input type="reset" class="btn btn-secondary" style="width: 15%" value="Reset">  --}}
+             </div>
+          </div>
+       </form>
+   </div>
+</div>
+</div>
+</div>
+</div>
+</body>
 @endsection
