@@ -9,22 +9,40 @@ use Illuminate\Support\Facades\Validator;
 
 class AttendanceController extends Controller
 {
-    public function getAllAttendances()
-    {
-        $attendances = Attendance::all();
-        // $courses = Course::all();
+
+    //Route for web
+
+    // public function getAllAttendances()
+    // {
+    //     $attendances = Attendance::all();
+    //     // $courses = Course::all();
 
        
-        return view('attendance.attend_details', compact('attendances'));
-    }
-    public function getAllReports()
-    {
-        $attendances = Attendance::all();
-        $courses = Course::all();
+    //     return view('attendance.attend_details', compact('attendances'));
+    // }
 
-        return view('report.report', compact('attendances', 'courses'));
+
+    // Route for api
+
+public function getAllattendances()
+{
+    $attendances = Attendance::all();
+    return response()->json(['attendances' => $attendances]);
+}
+
+
+
+//Route for web
+    // public function getAllReports()
+    // {
+    //     $attendances = Attendance::all();
+    //     $courses = Course::all();
+
+    //     return view('report.report', compact('attendances', 'courses'));
       
-    }
+    // }
+
+
 
     public function getSingleAttendance($attendanceId)
     {

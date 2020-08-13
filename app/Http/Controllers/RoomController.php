@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\room;
+use App\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -10,7 +10,7 @@ class roomController extends Controller
 {
     public function getAllrooms()
     {
-        $rooms = room::all();
+        $rooms = Room::all();
         return response()->json(['rooms' => $rooms]);
     }
 
@@ -34,9 +34,6 @@ class roomController extends Controller
             'longitude'=>'required',
             'latitude'=>'required',
             'capacity'=>'required',
-
-
-
         ]);
         if($validator->fails()){
             return response()->json([

@@ -14,7 +14,7 @@ class ProgrammeController extends Controller
         $programmes = Programme::all();
         $departments = Department::all();
         // return response()->json(['programmes' => $programmes]);
-        return view('programme.viewprogramme', compact('programmes', "departments"));
+        return view('programme.programme', compact('programmes', "departments"));
     }
 
     public function getSingleProgramme($programmeId)
@@ -43,13 +43,13 @@ class ProgrammeController extends Controller
         if($check->exists()){
              $check->first()->restore();
 
-            return redirect('/viewprogramme')->with('message', 'programme submitted');
+            return redirect('/programme')->with('message', 'programme submitted');
 
         }
 
         else{
             if(Programme::where('name', $name)->exists()){
-                return redirect('/viewprogramme')->with('error', 'programme exists ');
+                return redirect('/programme')->with('error', 'programme exists ');
             }
             else{
 
@@ -61,7 +61,7 @@ class ProgrammeController extends Controller
                  $programme->save();
 
 
-                 return redirect('/viewprogramme')->with('message', 'programme added successfully ');
+                 return redirect('/programme')->with('message', 'programme added successfully ');
             }
         }
     }
@@ -135,16 +135,16 @@ class ProgrammeController extends Controller
 
         $programme->save();
 
-        return redirect('/viewprogramme')->with('message', 'programme updated successfully');
+        return redirect('/programme')->with('message', 'programme updated successfully');
     }
 
     public function delete($id){
         $programme = Programme::find($id)->delete();
 
-        if (!$programme) return redirect('/viewprogramme')->with(['error' => 'programme not found']);
+        if (!$programme) return redirect('/programme')->with(['error' => 'programme not found']);
 
         $programme->delete();
-        return redirect('/viewprogramme')->with('message', 'programme deleted successfully');
+        return redirect('/programme')->with('message', 'programme deleted successfully');
     }
 
 }

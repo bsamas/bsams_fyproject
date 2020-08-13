@@ -48,34 +48,16 @@ Route::get('/showstaff', 'StaffController@getAllstaff')->name('showstaff');
 //course route
 
 Route::get('/course', ['uses'=>'CourseController@getAllCourses']);
-
 Route::post('/course', ['uses' => 'CourseController@postCourse']);
 Route::post('/edit_course/{id}', 'CourseController@editCourse');
 Route::get('/delete_course/{id}', 'CourseController@delete');
 
 
 Route::get('/department', ['uses'=>'DepartmentController@getAllDepartments']);
-
 Route::post('/department', ['uses'=>'DepartmentController@postDepartment']);
 Route::post('/edit_department/{id}', 'DepartmentController@edit');
 Route::get('/delete_department/{id}', 'DepartmentController@delete');
 
-
-
-// Route::get('/component', function() {
-//     return view('component.registration');
-
-// });
-
-// Route::get('/component', function() {
-//     return view('component.attendance_menu');
-
-// });
-
-
-// Route::get('/compo', function() {
-//     return view('attendance.attend_details');
-// });
 
 
 Route::get('/attendance', ['uses'=>'AttendanceController@getAllAttendances']);
@@ -85,7 +67,7 @@ Route::get('/report', ['uses'=>'AttendanceController@getAllReports']);
 
 
 Route::get('/programme', ['uses'=>'ProgrammeController@getAllProgrammes']);
-Route::get('/viewprogramme', 'ProgrammeController@getAllProgrammes');
+// Route::get('/programme', 'ProgrammeController@getAllProgrammes');
 
 Route::post('/postprogramme','ProgrammeController@postProgramme');
 Route::post('/edit_programme/{id}', 'ProgrammeController@edit');
@@ -96,3 +78,7 @@ Route::get('/delete_programme/{id}', 'ProgrammeController@delete');
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

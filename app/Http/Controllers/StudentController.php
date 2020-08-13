@@ -8,12 +8,21 @@ use Illuminate\Support\Facades\Validator;
 
 class StudentController extends Controller
 {
-    public function getAllStudents()
-    {
-        $students = Student::all();
-        return view('student.student', compact('students'));
-        // return response()->json(['students' => $students]);
-    }
+    // public function getAllStudents()
+    // {
+    //     $students = Student::all();
+    //     return view('student.student', compact('students'));
+    //     // return response()->json(['students' => $students]);
+    // }
+
+
+// api routes
+public function getAllStudents()
+{
+    $students = Student::all();
+     return response()->json(['students' => $students]);
+}
+
 
     public function getSingleStudent($studentId)
     {
@@ -31,7 +40,7 @@ class StudentController extends Controller
         $validator=Validator::make($request->all(),
         [
             'reg_number'=>'required | unique:students',
-            // 'fingerprint'=>'required | unique:students',
+            'fingerprint'=>'required | unique:students',
             'first_name'=>'required',
             'middle_name'=>'required',
             'last_name'=>'required',
@@ -63,7 +72,8 @@ class StudentController extends Controller
 
 
         $student->save();
-        return redirect('/student')->with('message', 'registration done successfully');
+        // return redirect('/student')->with('message', 'registration done successfully');
+        return response()->json(['student' =>$student],200);
     }
 
 
