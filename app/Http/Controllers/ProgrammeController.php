@@ -34,7 +34,7 @@ class ProgrammeController extends Controller
 
     public function postProgramme(Request $request)
     {
-       
+
        $name = $request->input('name');
 
         // logic that check if the programme exists but deleted then restore instead of dublicating

@@ -47,7 +47,7 @@ class CourseController extends Controller
         //     return redirect('/coursedetails')->with('message', 'course exists'
         //        );
         // }
-          
+
         // logic that check if the course exists but deleted then restore instead of dublicating
 $check = Course::where('code', $code)->where('deleted_at', '!=', null)->withTrashed();
 
@@ -69,15 +69,15 @@ $check = Course::where('code', $code)->where('deleted_at', '!=', null)->withTras
                 $courses->semester=$request->input('semester');
                 $courses->class=$request->input('class');
                 $courses->programme_id=$request->input('programme_id');
-        
+
                  $courses->save();
 
                  return redirect('/course')->with('message', 'course added successfully ');
             }
         }
     }
-    
-    
+
+
 
      public function editCourse(Request $request, $id)
     {
@@ -139,7 +139,7 @@ $check = Course::where('code', $code)->where('deleted_at', '!=', null)->withTras
     //     $courses->course_name = $request->input('course_name');
     //     $courses->semester = $request->input('semester');
     //     $courses->class = $request->input('class');
-        
+
     //     $courses->save();
 
     //     return redirect('/coursedetails')->with('message', 'course updated successfully');
