@@ -6,6 +6,7 @@ use App\Course;
 use App\Programme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\request as REQ;
 
 class CourseController extends Controller
 {
@@ -13,7 +14,8 @@ class CourseController extends Controller
     {
         $courses = Course::all();
         $programmes = Programme::all();
-        // return response()->json(['courses' => $courses]);
+        if(REQ::is('api/*'))
+        return response()->json(['courses' => $courses, 'programmes' => $programmes]);
         return view('course.coursedetails', compact('courses','programmes'));
     }
 
@@ -74,35 +76,8 @@ $check = Course::where('code', $code)->where('deleted_at', '!=', null)->withTras
             }
         }
     }
-    //     $validator=Validator::make($request->all(),
-    //     [
-    //         'code'=>'required | unique:courses',
-    //         'code'=>'required',
-    //         'semester'=>'required',
-    //         'class'=>'required',
-    //         'programme_id'=>'required'
-
-    //     ]);
-    //     if($validator->fails()){
-    //         return response()->json([
-    //             'error'=>$validator->errors(),
-    //             'message'=>$validator->errors()->first()
-    //         ],404);
-    //     }
-
-    //     $programme = Programme::find($request->programme_id);
-
-    //     $courses=new Course();
-    //     $courses->code=$request->input('code');
-    //     $courses->code=$request->input('code');
-    //     $courses->semester=$request->input('semester');
-    //     $courses->class=$request->input('class');
-    //     // $courses->programme_id=$request->input('programme_id');
-
-    //     $programme->save([$courses]);
-    //     // return response()->json(['course' => $courses],200);
-    //     return redirect('/course')->with('message', 'course registered successfully');
-    // }
+    
+    
 
      public function editCourse(Request $request, $id)
     {
