@@ -12,19 +12,19 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+  {{--  <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">  --}}
   <!-- iCheck -->
-  <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+  {{--  <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">  --}}
   <!-- JQVMap -->
-  <link rel="stylesheet" href="{{ asset('plugins/jqvmap/jqvmap.min.css') }}"
+  {{--  <link rel="stylesheet" href="{{ asset('plugins/jqvmap/jqvmap.min.css') }}">  --}}
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+  {{--  <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">  --}}
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
+  {{--  <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">  --}}
   <!-- summernote -->
-  <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+  {{--  <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">  --}}
 
    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -95,7 +95,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item activee">
-            <a href="home" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -114,7 +114,7 @@
 <li class="nav-item">
      <a href="department" class="nav-link">
           <i class="fa fa-building" aria-hidden="true"></i>
-          
+
         <span class="brand-text font-weight-light">Department detail</span>
     </a>
 </li>
@@ -123,7 +123,7 @@
 
 <li class="nav-item">
     <a href="programme" class="nav-link">
-       
+
          <i class="fa fa-list-alt" aria-hidden="true"></i>
          <span class="brand-text font-weight-light">Programme</span>
     </a>
@@ -131,7 +131,7 @@
 
 <li class="nav-item">
     <a href="course" class="nav-link">
-      
+
         <i class="fa fa-book" aria-hidden="true"></i>
         <span class="brand-text font-weight-light">Course Details</span>
     </a>
@@ -139,7 +139,7 @@
 
 <li class="nav-item">
     <a href="staff" class="nav-link">
-      
+
          <i class="fa fa-user" aria-hidden="true"></i>
       <span class="brand-text font-weight-light">Staff Details</span>
     </a>
@@ -157,14 +157,14 @@
 <li class="nav-item has-treeview">
     <a href="#" class="nav-link">
         <i class="nav-icon fas fa-edit"></i>
-        
+
         <span class="brand-text font-weight-light">Attendance Details</span>
     </a>
     <ul class="nav nav-treeview">
 <li class="nav-item">
      <a href="attendance" class="nav-link">
           <i class="fa fa-building" aria-hidden="true"></i>
-          
+
         <span class="brand-text font-weight-light">Attendance Register</span>
     </a>
 </li>
@@ -173,7 +173,7 @@
 
 <li class="nav-item">
     <a href="report" class="nav-link">
-       
+
          <i class="fa fa-list-alt" aria-hidden="true"></i>
          <span class="brand-text font-weight-light">Report</span>
     </a>
@@ -187,7 +187,7 @@
 
 
 
- 
+
 
 
           {{--  <li class="nav-item has-treeview">
@@ -232,7 +232,7 @@
     </ul>
 </nav>
       <!-- /.sidebar-menu -->
-     
+
 
     <!-- /.sidebar -->
   </aside>
@@ -300,13 +300,13 @@
 
           <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"   --}}
           integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
-         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>  
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
-         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-          <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>  
-         <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>   
+          <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+         <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 
  </body>
 </html>

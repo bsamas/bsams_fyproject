@@ -29,7 +29,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+//this is used to restrict the user to access direct without logi
 Route::group(['middleware' => 'auth'], function() {
 
     //routes for student details#
@@ -37,7 +37,7 @@ Route::group(['middleware' => 'auth'], function() {
 Route::get('/student', ['uses'=>'StudentController@getAllStudents']);
 Route::post('/student', ['uses'=>'StudentController@postStudent']);
 Route::post('/student/{id}', 'StudentController@editStudent');
-Route::get('/delete_student/{id}', 'StudentController@delete');
+Route::get('/delete_student/{id}', 'StudentController@deleteStudent');
 
 //staff routes
 Route::get('/staff', ['uses'=>'StaffController@getAllStaff']);

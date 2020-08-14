@@ -12,8 +12,10 @@ class StudentController extends Controller
     public function getAllStudents()
     {
         $students = Student::all();
-        if(REQ::is('api/*'))
-        return response()->json(['students' => $students]);
+        if(REQ::is('api/*')){
+            return response()->json(['students' => $students]);
+        }
+
         return view('student.student', compact('students'));
     }
 
@@ -26,9 +28,9 @@ class StudentController extends Controller
 // }
 
 
-    public function getSingleStudent($studentId)
+    public function getSingleStudent($id)
     {
-        $student = Student::find($studentId);
+        $student = Student::find($id);
 
         if (!$student) return response()->json(['error' => 'Student not found']);
 
@@ -81,7 +83,7 @@ class StudentController extends Controller
 
 
 
-    public function editStudent(Request $request, $studentId)
+    public function editStudent(Request $request, $id)
     {
 
           $validator=Validator::make($request->all(),
@@ -105,7 +107,7 @@ class StudentController extends Controller
                 'message'=>$validator->errors()->first()
             ],404);
 
-        $student = Student::find($studentId);
+        $student = Student::find($id);
             if(REQ::is('api/*'))
         if(!$student)  return response()->json(['error'=>'student not found']);
         if(!$student)  return redirect('/student')->with(['error'=>'student not found']);
@@ -128,15 +130,18 @@ class StudentController extends Controller
         // $student->update($request->all());
     }
 
-    public function deleteStudent($studentId)
+    public function deleteStudent($id)
     {
 
-        $student = Student::find($studentId);
-
+        $student = Student::find($id);
+        if(REQ::is('api/*'))
         if (!$student) return response()->json(['error' => 'student not found']);
+        if (!$student) return redirect('/student')->with(['error' => 'student not found']);
 
         $student->delete();
-
-        return response()->json(['message' => 'student deleted successfully!']);
+        if (REQ::is('api/*')) {
+           return response()->json(['message' => 'student deleted successfully!']);
+        }
+        return redirect('/student')->with(['message' => 'student deleted successfully!']);
     }
 }

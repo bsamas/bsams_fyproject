@@ -142,13 +142,12 @@
       <input type="text" class="form-control" id="inputFirstname" name="first_name" placeholder="Enter first name" required>
   </div>
 </div>
-
   <div class="form-row">
-            <div class="form-group col-md-6">
-         <label>Last name </label>
-      <input type="text" class="form-control" id="inputLastname" name="last_name" placeholder="Enter last name" required>
-   </div>
- <div class="form-group col-md-6">
+        <div class="form-group col-md-6">
+            <label>Last name </label>
+                <input type="text" class="form-control" id="inputLastname" name="last_name" placeholder="Enter last name" required>
+                    </div>
+                        <div class="form-group col-md-6">
                     <label>Gender</label>
                   <select id="inputGender" class="form-control" name="gender" required>
                <option value="">Select gender</option>
@@ -165,17 +164,16 @@
               </div>
                <div class="form-group col-md-6">
                 <label>Year of study </label>
-             <select id="inputYearOfStudy" class="form-control" name="year_of_study" required>
-            <option value="">Select year </option>
-
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>
-            <option value="2023">2023</option>
-            <option value="2024">2024</option>
-            <option value="2025">2025</option>
-            </select>
-           </div>
+                <select id="inputYearOfStudy" class="form-control" name="year_of_study" required>
+                <option value="">Select year </option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                </select>
+            </div>
 
          {{--  <div class="form-group col-md-5">
        <label>Phone number</label>
@@ -219,15 +217,14 @@
       <input type="text" class="form-control" id="firstname" name="first_name" placeholder="Enter first name" required>
   </div>
 </div>
-
   <div class="form-row">
-            <div class="form-group col-md-6">
-         <label for="inputLastname">Last name </label>
-      <input type="text" class="form-control" id="lastname" name="last_name" placeholder="Enter last name" required>
-   </div>
- <div class="form-group col-md-6">
-                    <label>Gender</label>
-                  <select id="gender" class="form-control" name="gender" required>
+    <div class="form-group col-md-6">
+        <label for="inputLastname">Last name </label>
+             <input type="text" class="form-control" id="lastname" name="last_name" placeholder="Enter last name" required>
+                </div>
+                    <div class="form-group col-md-6">
+                        <label>Gender</label>
+                    <select id="gender" class="form-control" name="gender" required>
                <option value="">Select gender</option>
            <option value="male">male</option>
         <option value="female">female</option>
