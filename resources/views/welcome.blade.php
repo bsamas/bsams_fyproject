@@ -13,7 +13,7 @@
         <style>
             html, body {
                 {{--  background-blend-mode: screen;  --}}
-                background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url("{{asset('images/download.jpg')}}");
+                background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url("{{asset('images/block.png')}}");
                 background-size: cover;
                 background-position: center;
                                 color: #fff;
