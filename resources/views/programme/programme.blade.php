@@ -86,7 +86,7 @@
                 <option value="{{$department->name}}">{{$department->name}}</option>
                 @endforeach
                 </select>
-                    
+
                 </div>
                </div>
                <div class="modal-footer">
@@ -196,13 +196,13 @@
         var button = $(event.relatedTarget)
         var programme = button.data('programme')
         console.log(programme)
-      
+
 
     })
 </script>
 
 <script>
-$(document).ready( function () {
+$('document').ready( function () {
     $('#data').DataTable();
 } );
 </script>

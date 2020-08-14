@@ -5,23 +5,25 @@ namespace App\Http\Controllers;
 use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\request as REQ;
 
 class StudentController extends Controller
 {
-    // public function getAllStudents()
-    // {
-    //     $students = Student::all();
-    //     return view('student.student', compact('students'));
-    //     // return response()->json(['students' => $students]);
-    // }
+    public function getAllStudents()
+    {
+        $students = Student::all();
+        if(REQ::is('api/*'))
+        return response()->json(['students' => $students]);
+        return view('student.student', compact('students'));
+    }
 
 
 // api routes
-public function getAllStudents()
-{
-    $students = Student::all();
-     return response()->json(['students' => $students]);
-}
+// public function getAllStudents()
+// {
+//     $students = Student::all();
+//      return response()->json(['students' => $students]);
+// }
 
 
     public function getSingleStudent($studentId)
@@ -40,15 +42,15 @@ public function getAllStudents()
         $validator=Validator::make($request->all(),
         [
             'reg_number'=>'required | unique:students',
-            'fingerprint'=>'required | unique:students',
+            // 'fingerprint'=>'required | unique:students',
             'first_name'=>'required',
-            'middle_name'=>'required',
+            // 'middle_name'=>'required',
             'last_name'=>'required',
             'gender'=>'required',
-            'date_of_birth'=>'required',
+            // 'date_of_birth'=>'required',
             'year_of_study'=>'required',
             'email'=>'required | unique:students',
-            'phone_number'=>'required | unique:students'
+            // 'phone_number'=>'required | unique:students'
 
 
         ]);
@@ -62,37 +64,38 @@ public function getAllStudents()
         $student->reg_number=$request->input('reg_number');
         // $student->fingerprint=$request->input('fingerprint');
         $student->first_name=$request->input('first_name');
-        $student->middle_name=$request->input('middle_name');
+        // $student->middle_name=$request->input('middle_name');
         $student->last_name=$request->input('last_name');
         $student->gender=$request->input('gender');
-        $student->date_of_birth=$request->input('date_of_birth');
+        // $student->date_of_birth=$request->input('date_of_birth');
         $student->year_of_study=$request->input('year_of_study');
         $student->email=$request->input('email');
-        $student->phone_number=$request->input('phone_number');
+        // $student->phone_number=$request->input('phone_number');
 
 
         $student->save();
-        // return redirect('/student')->with('message', 'registration done successfully');
+        if(REQ::is('api/*'))
         return response()->json(['student' =>$student],200);
+         return redirect('/student')->with('message', 'registration done successfully');
     }
 
 
 
-    public function putStudent(Request $request, $studentId)
+    public function editStudent(Request $request, $studentId)
     {
 
           $validator=Validator::make($request->all(),
         [
             'reg_number'=>'required ',
-            'fingerprint'=>'required',
+            // 'fingerprint'=>'required',
             'first_name'=>'required',
-            'middle_name'=>'required',
+            // 'middle_name'=>'required',
             'last_name'=>'required',
             'gender'=>'required',
-            'date_of_birth'=>'required',
+            // 'date_of_birth'=>'required',
             'year_of_study'=>'required',
             'email'=>'required',
-            'phone_number'=>'required',
+            // 'phone_number'=>'required',
         ]);
 
 
@@ -103,20 +106,21 @@ public function getAllStudents()
             ],404);
 
         $student = Student::find($studentId);
-
+            if(REQ::is('api/*'))
         if(!$student)  return response()->json(['error'=>'student not found']);
+        if(!$student)  return redirect('/student')->with(['error'=>'student not found']);
 
         $student->update([
             'reg_number'=> $request->reg_number,
             'fingerprint'=> $request->fingerprint,
             'first_name'=> $request->first_name,
-            'middle_name'=> $request->middle_name,
+            // 'middle_name'=> $request->middle_name,
             'last-name'=> $request->last_name,
             'gender'=> $request->gender,
-            'date_of_birth'=> $request->date_of_birth,
+            // 'date_of_birth'=> $request->date_of_birth,
             'year_of_study'=> $request->year_of_study,
             'email'=> $request->email,
-            'phone_number'=> $request->phone_number
+            // 'phone_number'=> $request->phone_number
 
         ]);
 

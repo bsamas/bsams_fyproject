@@ -33,22 +33,22 @@
         <th scope="col">Id</th>
 
         <th scope="col">RegNo</th>
-        
+
         {{--  <th scope="col">Fingerprint</th>  --}}
-    
+
         <th scope="col">Fname</th>
-        
-        <th scope="col">Mname</th>        
-    
+
+        {{--  <th scope="col">Mname</th>  --}}
+
         <th scope="col">Lname</th>
-    
+
         <th scope="col">Gender</th>
-               
-        <th scope="col">DOB</th>
+
+        {{--  <th scope="col">DOB</th>  --}}
 
         <th scope="col">YOS</th>
 
-        <th scope="col">PhoneNo</th>
+        {{--  <th scope="col">PhoneNo</th>  --}}
 
         <th scope="col">Email</th>
         <th scope="col">Action</th>
@@ -65,12 +65,12 @@
 <td>{{ $student->reg_number}}</td>
 {{--  <td>{{ $student->fingerprint}}</td>  --}}
 <td>{{ $student->first_name }}</td>
-<td>{{ $student->middle_name }}</td>
+{{--  <td>{{ $student->middle_name }}</td>  --}}
 <td>{{ $student->last_name }}</td>
 <td>{{ $student->gender }}</td>
-<td>{{ $student->date_of_birth }}</td>
+{{--  <td>{{ $student->date_of_birth }}</td>  --}}
 <td>{{ $student->year_of_study}}</td>
-<td>{{ $student->phone_number }}</td>
+{{--  <td>{{ $student->phone_number }}</td>  --}}
 <td>{{ $student->email }}</td>
 <td>
     <a href="#" type="button" class="btn btn-link" data-toggle="modal" data-target="#edit_student" data-student="{{ ($student) }}">
@@ -142,22 +142,13 @@
       <input type="text" class="form-control" id="inputFirstname" name="first_name" placeholder="Enter first name" required>
   </div>
 </div>
+
   <div class="form-row">
-     <div class="form-group col-md-6">
-        <label>Middle name</label>
-          <input type="text" class="form-control" id="inputMiddlename" name="middle_name" placeholder="Enter middle name" required>
-              </div>
             <div class="form-group col-md-6">
          <label>Last name </label>
       <input type="text" class="form-control" id="inputLastname" name="last_name" placeholder="Enter last name" required>
    </div>
-</div>
-  <div class="form-row">
-     <div class="form-group col-md-6">
-        <label>Date of birth</label>
-           <input type="date" class="form-control datepicker" id="inputDateOfBirth" name="date_of_birth" placeholder="Enter your birth date" required>
-              </div>
-                 <div class="form-group col-md-6">
+ <div class="form-group col-md-6">
                     <label>Gender</label>
                   <select id="inputGender" class="form-control" name="gender" required>
                <option value="">Select gender</option>
@@ -167,25 +158,16 @@
    </div>
 </div>
   <div class="form-row">
-     <div class="form-group col-md-3">
+     <div class="form-group col-md-6">
        <label>Email</label>
           <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Enter email" required>
              <div class="invalid-feedback">Please enter a valid email address.</div>
               </div>
-               <div class="form-group col-md-4">
+               <div class="form-group col-md-6">
                 <label>Year of study </label>
              <select id="inputYearOfStudy" class="form-control" name="year_of_study" required>
             <option value="">Select year </option>
 
-            <option value="2011">2011</option>
-            <option value="2012">2012</option>
-            <option value="2013">2013</option>
-            <option value="2014">2014</option>
-            <option value="2015">2015</option>
-            <option value="2016">2016</option>
-            <option value="2017">2017</option>
-            <option value="2018">2018</option>
-            <option value="2019">2019</option>
             <option value="2020">2020</option>
             <option value="2021">2021</option>
             <option value="2022">2022</option>
@@ -194,10 +176,11 @@
             <option value="2025">2025</option>
             </select>
            </div>
-         <div class="form-group col-md-5">
+
+         {{--  <div class="form-group col-md-5">
        <label>Phone number</label>
      <input type="number" class="form-control" id="inputPhonenumber" name="phone_number" placeholder="Phone number" required>
-    </div>
+    </div>  --}}
   </div>
     </div>
         <div class="modal-footer">
@@ -223,7 +206,7 @@
               <span aria-hidden="true">&times;</span>
                 </button>
                  </div>
-                      <form action='{{url("/edit_student/{id}")}}' method="POST">
+                      <form action='{{url("/student/{id}")}}' method="POST">
                         {{csrf_field()}}
                             <div class="modal-body">
                             <div class="form-row">
@@ -236,22 +219,13 @@
       <input type="text" class="form-control" id="firstname" name="first_name" placeholder="Enter first name" required>
   </div>
 </div>
+
   <div class="form-row">
-     <div class="form-group col-md-6">
-        <label for="inputMiddlename">Middle name</label>
-          <input type="text" class="form-control" id="middlename" name="middle_name" placeholder="Enter middle name" required>
-              </div>
             <div class="form-group col-md-6">
          <label for="inputLastname">Last name </label>
       <input type="text" class="form-control" id="lastname" name="last_name" placeholder="Enter last name" required>
    </div>
-</div>
-  <div class="form-row">
-     <div class="form-group col-md-6">
-        <label>Date of birth</label>
-           <input type="date" class="form-control datepicker" id="date" name="date_of_birth" placeholder="Enter your birth date" required>
-              </div>
-                 <div class="form-group col-md-6">
+ <div class="form-group col-md-6">
                     <label>Gender</label>
                   <select id="gender" class="form-control" name="gender" required>
                <option value="">Select gender</option>
@@ -261,25 +235,15 @@
    </div>
 </div>
   <div class="form-row">
-     <div class="form-group col-md-5">
+     <div class="form-group col-md-6">
        <label>Email</label>
           <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
              <div class="invalid-feedback">Please enter a valid email address.</div>
               </div>
-               <div class="form-group col-md-2">
+               <div class="form-group col-md-6">
                 <label>Year of study </label>
              <select id="year" class="form-control" name="year_of_study" required>
             <option value="">Select year of study</option>
-
-            <option value="2011">2011</option>
-            <option value="2012">2012</option>
-            <option value="2013">2013</option>
-            <option value="2014">2014</option>
-            <option value="2015">2015</option>
-            <option value="2016">2016</option>
-            <option value="2017">2017</option>
-            <option value="2018">2018</option>
-            <option value="2019">2019</option>
             <option value="2020">2020</option>
             <option value="2021">2021</option>
             <option value="2022">2022</option>
@@ -288,10 +252,7 @@
             <option value="2025">2025</option>
             </select>
            </div>
-         <div class="form-group col-md-5">
-       <label>Phone number</label>
-     <input type="number" class="form-control" id="number" name="phone_number" placeholder="Phone number" required>
-</div>
+
   </div>
                 </div>
 
@@ -327,6 +288,11 @@
     })
 </script>
 
+<script>
+    $('document').ready(function(){
+        $('#data'). DataTable();
+    });
+</script>
 @endsection
 
 

@@ -18,13 +18,13 @@ class CreateStudentsTable extends Migration
             $table->string('reg_number')->unique();
             $table->string('fingerprint')->unique()->nullable();
             $table->string('first_name');
-            $table->string('middle_name');
+            // $table->string('middle_name');
             $table->string('last_name');
             $table->string('gender');
-            $table->timestamp('date_of_birth');
+            // $table->timestamp('date_of_birth');
             $table->string('year_of_study');
             $table->string('email')->unique();
-            $table->double('phone_number')->unique();
+            // $table->double('phone_number')->unique();
             $table->softDeletes();
             $table->timestamps();
         });

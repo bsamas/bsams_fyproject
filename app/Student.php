@@ -14,13 +14,13 @@ class Student extends Model
         'reg_number',
         'fingerprint',
         'first_name',
-        'middle_name',
+        // 'middle_name',
         'last_name',
         'gender',
-        'date_of_birth',
+        // 'date_of_birth',
         'year_of_study',
         'email',
-        'phone_number'
+        // 'phone_number'
 
 
 
