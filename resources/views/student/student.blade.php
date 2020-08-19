@@ -174,12 +174,22 @@
                 <option value="2025">2025</option>
                 </select>
             </div>
+            </div>
 
-         {{--  <div class="form-group col-md-5">
-       <label>Phone number</label>
-     <input type="number" class="form-control" id="inputPhonenumber" name="phone_number" placeholder="Phone number" required>
-    </div>  --}}
-  </div>
+         <div class="form-group row">
+            <label for="password" class="col-md-2 col-form-label text-md-right">{{ __('Password') }}</label>
+
+            <div class="col-md-10">
+                <input id="password" type="password" class="form-control" name="password" required>
+
+                {{--  @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror  --}}
+            </div>
+        </div>
+
     </div>
         <div class="modal-footer">
          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

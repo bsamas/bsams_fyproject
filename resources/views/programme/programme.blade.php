@@ -20,14 +20,12 @@
 @endif
 
 <div class="container">
-<div class="card">
+{{--  <div class="card">  --}}
             {{-- ///== the add pop up button====// --}}
-                <div class="col-md-3 p-3">
-                    <button class="btn btn-primary"  data-toggle="modal" data-target="#add">Add New</button>
-                </div>
-                <table id="data" class="table table-striped table-bordered" cellspacing="0" width="100%">
-
-
+    <div class="col-md-3 p-3">
+        <button class="btn btn-primary"  data-toggle="modal" data-target="#add">Add New</button>
+            </div>
+    <table id="data" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
        <tr>
         <th class="th-sm">Id
@@ -136,7 +134,7 @@
 @endforeach
 @endif
   </table>
-          </div>
+          {{--  </div>  --}}
 
 
     <!-- Modal_for adding -->

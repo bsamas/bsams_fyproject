@@ -26,11 +26,9 @@
       <tr>
         <th scope="col">Id</th>
 
-          <th scope="col">StNo</th>
+          {{--  <th scope="col">StNo</th>  --}}
 
-            <th scope="col">FName</th>
-
-              <th scope="col">LName</th>
+            <th scope="col">Name</th>
 
                 <th scope="col">Gender</th>
 
@@ -38,86 +36,74 @@
 
                 <th scope="col">Department</th>
 
-              <th scope="col">PhoneNo</th>
-
             <th scope="col">Email</th>
+            <th scope="col">Action</th>
 
-          <th scope="col">Username</th>
-
-        <th scope="col">Action</th>
+           {{--  <th scope="col">Username</th>     <th scope="col">Action</th>  --}}
       </tr>
     </thead>
-    @if(count($staff) > 0)
+    @if(count($users) > 0)
 
-      @foreach ($staff as $staff)
+      @foreach ($users as $user)
         <tr>
-          <td>{{ $staff->id }}</td>
-            <td>{{ $staff->staff_number}}</td>
-              <td>{{ $staff->first_name }}</td>
-                <td>{{ $staff->last_name }}</td>
-                  <td>{{ $staff->gender }}</td>
-                    <td>{{ $staff->type }}</td>
+          <td>{{ $user->id }}</td>
+            {{--  <td>{{ $user->user_number}}</td>  --}}
+              <td>{{ $user->name }}</td>
+                {{--  <td>{{ $user->last_name }}</td>  --}}
+                  <td>{{ $user->gender }}</td>
+                    <td>{{ $user->type }}</td>
                     {{--  //how to print foreign key details//  --}}
-                <td>{{ $staff->department_id}}</td>
-              <td>{{ $staff->phone_number }}</td>
-            <td>{{ $staff->email }}</td>
-          <td>{{ $staff->username }}</td>
+                <td>{{ $user->department_id}}</td>
+              {{--  <td>{{ $user->phone_number }}</td>  --}}
+            <td>{{ $user->email }}</td>
+          {{--  <td>{{ $user->username }}</td>  --}}
           <td>
-            <a href="#" type="button" class="btn btn-link" data-toggle="modal" data-target="#edit_staff"> 
+            <a href="#" type="button" class="btn btn-link" data-toggle="modal" data-target="#edit_user">
               <i class="nav-icon fas fa-edit" ></i>
             </a>
-            <a href="#" type="button" class="btn btn-link" data-toggle="modal" data-target="#{{ ($staff->staff_number)}}1">
+            <a href="#" type="button" class="btn btn-link" data-toggle="modal" data-target="#{{ ($user->user_number)}}1">
               <i class="fa fa-trash" aria-hidden="true"></i>
             </a>
           </td>
              {{-- //===start edit button pop up===// --}}
-          <div class="modal fade" id="{{ ($staff->staff_number) }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+          <div class="modal fade" id="{{ ($user->user_number) }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">STAFF DETAILS</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">user DETAILS</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{url('/Staffpost')}}" method="POST">
+                <form action="{{url('/userpost')}}" method="POST">
                   {{csrf_field()}}
                     <div class="modal-body">
                       <div class="form-group row">
 
                           <div class="form-group col-md-6">
-                            <label for="inputStaffno">StaffNumber</label>
-                            <input type="text" class="form-control" id="inputStaffno" name="staff_number" placeholder="Enter staff number" required>
+                            <label for="inputuserno">userNumber</label>
+                            <input type="text" class="form-control" id="inputuserno" name="user_number" placeholder="Enter user number" required>
                           </div>
 
                         <div class="form-group col-md-6">
-                          <label for="inputFirstname">First name</label>
-                          <input type="text" class="form-control" id="inputFirstname" name="first_name" placeholder="First name" required>
+                          <label for="inputFirstname">name</label>
+                          <input type="text" class="form-control" id="inputFirstname" name="name" placeholder="Enter name" required>
                         </div>
                       </div>
+
               <div class="form-group row">
                 <div class="form-group col-md-6">
-                    <label for="inputMiddlename">Middle name</label>
-                      <input type="text" class="form-control" id="inputMiddlename" name="middle_name" placeholder=" Middle name" required>
-                          </div>
-                        <div class="form-group col-md-6">
-                    <label for="inputLastname">Last name </label>
-                  <input type="text" class="form-control" id="inputLastname" name="last_name" placeholder=" Last name" required>
-              </div>
-              </div>
-              <div class="form-group row">
-                <div class="form-group col-md-3">
                     <label for="inputDepartment">Department</label>
                         <select name="department" id="inputDepartment" class="form-control" required>
-                        {{--  @foreach($departments as $staff)
+                        {{--  @foreach($departments as $user)
                           <tr>
-                          <td>{{$staff->id}}</td>
-                          <td>{{$staff->department_name}}</td>
+                          <td>{{$user->id}}</td>
+                          <td>{{$user->department_name}}</td>
                           </tr>
                           @endforeach  --}}
                         </select>
                         </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-6">
                                 <label for="inputGender">Gender</label>
                               <select id="inputGender" class="form-control" name="gender" required>
                           <option value="">Select gender</option>
@@ -125,36 +111,28 @@
                     <option value="female">female</option>
                   </select>
               </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-6">
                             <label for="inputType">Type </label>
                         <select id="inputType" class="form-control" name="type" required>
-                        <option value="">Type of staff</option>
+                        <option value="">Type of user</option>
                         <option value="Lecturer">Lecturer</option>
                         <option value="Assistant">Assistant</option>
                         <option value="SemLeader">SemLeader</option>
                           </select>
                       </div>
-                      <div class="form-group col-md-3">
+                      <div class="form-group col-md-6">
                   <label for="inputEmail">Email</label>
                       <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Enter email" required>
                         <div class="invalid-feedback">Please enter a valid email address.</div>
                           </div>
-              </div>
-              <div class="form-row">
-                    <div class="form-group col-md-3">
-                  <label>Number</label>
-                <input type="number" class="form-control" id="inputPhonenumber" name="phone_number" placeholder="Number" required>
-              </div>
-              <div class="form-group col-md-3">
-                    <label>Username</label>
-                      <input type="text" class="form-control" id="inputUsername" name="username" placeholder="username" required>
-                          </div>
-                        <div class="form-group col-md-3">
+                         </div>
+
+                        <div class="form-group col-md-6">
                     <label>Password </label>
                   <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" required>
               </div>
-                  <div class="form-group col-md-3">
-                    <label>Confirm</label>
+                  <div class="form-group col-md-6">
+                    <label>Confirm Password</label>
                   <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
               </div>
               </div>
@@ -169,16 +147,18 @@
                   </form>.
                 </div>
               </div>
-              </div>
+
+
+
               {{-- //===End edit button pop up===// --}}
 
 
               {{-- //====start delete modal pop up button===// --}}
-              <div class="modal fade" id="{{ ($staff->staff_number) }}1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+              <div class="modal fade" id="{{ ($user->user_number) }}1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">STAFF DETAILS</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">user DETAILS</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -188,14 +168,14 @@
                   {{-- ///===alert alert- =     ===/// --}}
                   <div class="modal-body">
                         <div>
-                            <p> Are you sure you want to delete <strong class="text-danger"><?php echo $staff->staff_number; ?></strong>?</p>
+                            <p> Are you sure you want to delete <strong class="text-danger"><?php echo $user->user_number; ?></strong>?</p>
                         </div>
 
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-                    <a href='{{url("/delete_staff/{$staff->staff_number}")}}' class = "btn btn-danger">Delete</a>
+                    <a href='{{url("/delete_user/{$user->user_number}")}}' class = "btn btn-danger">Delete</a>
                   </div>
 
                 </div>
@@ -207,7 +187,7 @@
               @endforeach
               @endif
   </table>
-</div>
+
 
 
 
@@ -216,38 +196,20 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">STAFF DETAILS</h5>
+        <h5 class="modal-title" id="exampleModalLabel">USER DETAILS</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
            </button>
         </div>
-      <form action="{{url('/Staffpost')}}" method="POST">
+      <form action="{{url('/user')}}" method="POST">
         {{csrf_field()}}
       <div class="modal-body">
           <div class="form-group row">
-            <div class="form-group col-md-6">
-               <label for="inputStaffno">StaffNumber</label>
-                 <input type="text" class="form-control" id="inputStaffno" name="staff_number" placeholder="Enter staff number" required>
-               </div>
-           <div class="form-group col-md-6">
-         <label for="inputFirstname">First name</label>
-      <input type="text" class="form-control" id="inputFirstname" name="first_name" placeholder="First name" required>
+          <div class="form-group col-md-6">
+         <label>Name</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required>
   </div>
-</div>
-  <div class="form-group row">
      <div class="form-group col-md-6">
-        <label for="inputMiddlename">Middle name</label>
-          <input type="text" class="form-control" id="inputMiddlename" name="middle_name" placeholder=" Middle name" required>
-              </div>
-            <div class="form-group col-md-6">
-         <label for="inputLastname">Last name </label>
-      <input type="text" class="form-control" id="inputLastname" name="last_name" placeholder=" Last name" required>
-   </div>
-</div>
-
-
-  <div class="form-group row">
-     <div class="form-group col-md-3">
         <label>Department</label>
             <select name="department_id" class="form-control" required>
             // this loops the department details from the table department
@@ -256,7 +218,9 @@
                         @endforeach
                         </select>
                       </div>
-                     <div class="form-group col-md-3">
+                      </div>
+                      <div class="form group row">
+                     <div class="form-group col-md-6">
                     <label for="inputGender">Gender</label>
                   <select id="inputGender" class="form-control" name="gender" required>
                <option value="">Select gender</option>
@@ -264,40 +228,44 @@
         <option value="female">female</option>
       </select>
    </div>
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-6">
                 <label for="inputType">Type </label>
              <select id="inputType" class="form-control" name="type" required>
-            <option value="">Type of staff</option>
+            <option value="">Type of user</option>
             <option value="Lecturer">Lecturer</option>
             <option value="Assistant">Assistant</option>
             <option value="SemLeader">SemLeader</option>
                </select>
            </div>
-           <div class="form-group col-md-3">
+            </div>
+            <div class="form-group row">
+           <div class="form-group col-md-6">
        <label>Email</label>
-          <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Enter email" required>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
              <div class="invalid-feedback">Please enter a valid email address.</div>
               </div>
+                    {{--  <div class="form-group col-md-6">
+                    <label for="inputGender">Role</label>
+                  <select id="role" class="form-control" name="role" required>
+               <option value="">Select gender</option>
+           <option value="male">admin</option>
+        <option value="female">staff</option>
+      </select>
+   </div>  --}}
 </div>
-  <div class="form-row">
-         <div class="form-group col-md-3">
-       <label for="inputPhonenumber">Number</label>
-     <input type="number" class="form-control" id="inputPhonenumber" name="phone_number" placeholder="Number" required>
-</div>
-<div class="form-group col-md-3">
-        <label for="inputUsername">Username</label>
-          <input type="text" class="form-control" id="inputUsername" name="username" placeholder="username" required>
-              </div>
-            <div class="form-group col-md-3">
-         <label for="inputPassword">Password </label>
+
+                <div class="form-group row">
+            <div class="form-group col-md-6">
+         <label>Password </label>
       <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" required>
    </div>
-       <div class="form-group col-md-3">
-         <label for="inputPassword">Confirm</label>
+       <div class="form-group col-md-6">
+         <label>Confirm</label>
       <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
    </div>
+</div>
  </div>
-     </div>
+
         <div class="modal-footer">
          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
          <button type="submit" class="btn btn-primary">Save changes</button>
@@ -305,6 +273,7 @@
       </form>.
     </div>
   </div>
+</div>
 </div>
    <!-- End adding course -->
 

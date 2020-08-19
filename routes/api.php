@@ -42,12 +42,12 @@ Route::post('department',['uses'=>'DepartmentController@postDepartment']);
 Route::put('department/{departmentId}',['uses'=>'DepartmentController@putDepartment']);
 Route::delete('department/{departmentId}',['uses'=>'DepartmentController@deleteDepartment']);
 
-// //api for Staffs
-Route::get('staffs',['uses'=>'StaffController@getAllStaffs']);
-Route::get('staff/{staffId}',['uses'=>'StaffController@getSingleStaff']);
-Route::post('staff',['uses'=>'StaffController@postStaff']);
-Route::put('staff/{staffId}',['uses'=>'StaffController@putStaff']);
-Route::delete('staff/{staffId}',['uses'=>'StaffController@deleteStaff']);
+// //api for user
+Route::get('users',['uses'=>'AuthController@getAllUsers']);
+Route::get('user/{userId}',['uses'=>'UserController@getSingleUser']);
+Route::post('user',['uses'=>'AuthController@register']);
+Route::put('user/{userId}',['uses'=>'UserController@putUser']);
+Route::delete('user/{userId}',['uses'=>'UserController@deleteUser']);
 
 //api for room
 Route::get('rooms',['uses'=>'RoomController@getAllRooms']);
@@ -69,3 +69,8 @@ Route::get('programme/{programmeId}',['uses'=>'ProgrammeController@getSingleProg
 Route::post('programme',['uses'=>'ProgrammeController@postProgramme']);
 Route::put('programme/{programmeId}',['uses'=>'ProgrammeController@putProgramme']);
 Route::delete('programme/{programmeId}',['uses'=>'ProgrammeController@deleteProgramme']);
+
+
+
+Route::post('userlogin',['uses'=>'AuthController@login']);
+// Route::get('users',['uses'=>'LoginController@getAllUsers']);

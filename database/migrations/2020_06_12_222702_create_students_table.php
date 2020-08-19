@@ -24,6 +24,7 @@ class CreateStudentsTable extends Migration
             // $table->timestamp('date_of_birth');
             $table->string('year_of_study');
             $table->string('email')->unique();
+            $table->string('password');
             // $table->double('phone_number')->unique();
             $table->softDeletes();
             $table->timestamps();

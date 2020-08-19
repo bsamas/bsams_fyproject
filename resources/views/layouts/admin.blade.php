@@ -11,20 +11,10 @@
   <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bootstrap 4 -->
-  {{--  <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">  --}}
-  <!-- iCheck -->
-  {{--  <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">  --}}
-  <!-- JQVMap -->
-  {{--  <link rel="stylesheet" href="{{ asset('plugins/jqvmap/jqvmap.min.css') }}">  --}}
+
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
   <!-- overlayScrollbars -->
-  {{--  <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">  --}}
-  <!-- Daterange picker -->
-  {{--  <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">  --}}
-  <!-- summernote -->
-  {{--  <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">  --}}
 
    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -34,10 +24,7 @@
 @yield('styles')
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
-
-
-
+<body class="hold-transition sidebar-mini layout-fixed" >
  <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="background-color:rgb(60, 141, 188);">
@@ -66,19 +53,20 @@
       </div>
     </form>
   </nav>
-</div>
+
+
 
 
     <!-- Right navbar links -->
-    {{-- <ul class="navbar-nav ml-auto" >
+    {{--  <ul class="navbar-nav ml-auto" >
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
         </a>
       </li>
-    </ul> --}}
-  </nav>
-  <!-- /.navbar -->
+    </ul>  --}}
+
+
 
   <!-- Main leftsidebar Container -->
   <aside class="main-sidebar sidebar-dark-blue-primary elevation-4" >
@@ -138,10 +126,9 @@
 </li>
 
 <li class="nav-item">
-    <a href="staff" class="nav-link">
-
+    <a href="user" class="nav-link">
          <i class="fa fa-user" aria-hidden="true"></i>
-      <span class="brand-text font-weight-light">Staff Details</span>
+      <span class="brand-text font-weight-light">User Details</span>
     </a>
 </li>
 </ul>
@@ -149,22 +136,21 @@
 
 <li class="nav-item has-treeview">
     <a href="student" class="nav-link">
-        <i class="fa fa-graduation-cap" aria-hidden="true"></i
-              <span class="brand-text font-weight-light">Student Informations</span>
+        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+            <span class="brand-text font-weight-light">Student Informations</span>
     </a>
 </li>
 
 <li class="nav-item has-treeview">
     <a href="#" class="nav-link">
         <i class="nav-icon fas fa-edit"></i>
-
         <span class="brand-text font-weight-light">Attendance Details</span>
     </a>
     <ul class="nav nav-treeview">
+
 <li class="nav-item">
      <a href="attendance" class="nav-link">
           <i class="fa fa-building" aria-hidden="true"></i>
-
         <span class="brand-text font-weight-light">Attendance Register</span>
     </a>
 </li>
@@ -173,20 +159,12 @@
 
 <li class="nav-item">
     <a href="report" class="nav-link">
-
          <i class="fa fa-list-alt" aria-hidden="true"></i>
          <span class="brand-text font-weight-light">Report</span>
     </a>
 </li>
 </ul>
 </li>
-
-
-
-
-
-
-
 
 
 
@@ -253,10 +231,10 @@
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
   </aside>
-  <!-- /.control-sidebar -->
+  <!-- /.control-sidebar --> --}}
 </div>
-<!-- ./wrapper -->  --}}
-
+<!-- ./wrapper -->
+</
 <!-- jQuery -->
 <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 <!-- jQuery UI 1.11.4 -->

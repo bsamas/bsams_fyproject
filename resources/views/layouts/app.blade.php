@@ -29,39 +29,44 @@
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-size: 20px;
             font-weight: 600;
-            color: white;
+            color: rgb(32, 31, 31);
 
         }
 
         .container
         {
             width: 60%;
-           padding-top: 8%;
-           
-           
+           padding-top: 2%;
+
+
         }
+
 
         .card-body{
             background-color:rgb(226, 235, 235)
+
         }
 
         .form-group, label
         {
             font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-size: 15px;    
+            font-size: 15px;
             font-weight: 300
         }
-        
+
         body{
             {{--  background-color: rgb(184, 211, 211)  --}}
                 background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url("{{asset('images/block.png')}}");
                 background-size: cover;
         }
-       
+
     </style>
 </head>
 <body>
+
     <div id="app">
+
+
         <main class="py-4">
             @yield('content')
         </main>

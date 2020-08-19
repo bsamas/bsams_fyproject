@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Student;
 use Illuminate\Http\Request;
+use Illuminate\Http\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\request as REQ;
 
@@ -52,12 +53,18 @@ class StudentController extends Controller
             // 'date_of_birth'=>'required',
             'year_of_study'=>'required',
             'email'=>'required | unique:students',
-            // 'phone_number'=>'required | unique:students'
+            'password' => ['required', 'string', 'min:8', 'confirmed']
 
 
         ]);
         if($validator->fails()){
-            return response()->json([
+            if (REQ::is('api/*')) {
+                return response()->json([
+                'error'=>$validator->errors(),
+                'message'=>$validator->errors()->first()
+            ],404);
+            }
+            return redirect('/user')->with([
                 'error'=>$validator->errors(),
                 'message'=>$validator->errors()->first()
             ],404);
@@ -72,6 +79,7 @@ class StudentController extends Controller
         // $student->date_of_birth=$request->input('date_of_birth');
         $student->year_of_study=$request->input('year_of_study');
         $student->email=$request->input('email');
+         $student->password = Hash::make($student->input('password'));
         // $student->phone_number=$request->input('phone_number');
 
 

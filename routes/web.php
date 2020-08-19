@@ -5,6 +5,7 @@ use App\Http\Controllers\ProgrammeController;
 use App\Http\Controllers\StudentController;
 use App\Programme;
 use App\StudentView;
+use App\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Auth\Middleware\Authenticate;
@@ -29,6 +30,24 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Route::post('login/coustom',['uses' => 'LoginController@login', 'as' => 'login.custom']);
+
+// Route::group(['middleware' => 'auth'], function() {
+
+//     Route::get('/home', function() {
+//         return view('home');
+//     })->name('home');
+
+//     Route::get('/admin', function()
+//     {
+//         return view('admin')->name('admin');
+
+//     });
+
+// });
+
+
+
 //this is used to restrict the user to access direct without logi
 Route::group(['middleware' => 'auth'], function() {
 
@@ -39,10 +58,10 @@ Route::post('/student', ['uses'=>'StudentController@postStudent']);
 Route::post('/student/{id}', 'StudentController@editStudent');
 Route::get('/delete_student/{id}', 'StudentController@deleteStudent');
 
-//staff routes
-Route::get('/staff', ['uses'=>'StaffController@getAllStaff']);
-Route::post('/Staffpost', 'StaffController@postStaff');
-Route::get('/showstaff', 'StaffController@getAllstaff')->name('showstaff');
+// //user routes
+Route::get('/user', ['uses'=>'UserController@getAllUsers']);
+Route::post('/user ',['uses'=>'UserController@postUser']);
+// Route::get('/showuser', 'userController@getAllUser')->name('showuser');
 
 //course route
 

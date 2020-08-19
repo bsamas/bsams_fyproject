@@ -20,6 +20,7 @@ class Student extends Model
         // 'date_of_birth',
         'year_of_study',
         'email',
+        'password'
         // 'phone_number'
 
 

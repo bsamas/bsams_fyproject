@@ -6,6 +6,7 @@ use App\Attendance;
 use App\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\request as REQ;
 
 class AttendanceController extends Controller
 {
@@ -17,7 +18,7 @@ class AttendanceController extends Controller
     //     $attendances = Attendance::all();
     //     // $courses = Course::all();
 
-       
+
     //     return view('attendance.attend_details', compact('attendances'));
     // }
 
@@ -27,20 +28,23 @@ class AttendanceController extends Controller
 public function getAllattendances()
 {
     $attendances = Attendance::all();
-    return response()->json(['attendances' => $attendances]);
+    if (REQ::is('api/*')) {
+         return response()->json(['attendances' => $attendances]);
+    }
+     return view('attendance.attend_details', compact('attendances'));
 }
 
 
 
 //Route for web
-    // public function getAllReports()
-    // {
-    //     $attendances = Attendance::all();
-    //     $courses = Course::all();
+    public function getAllReports()
+    {
+        $attendances = Attendance::all();
+        $courses = Course::all();
 
-    //     return view('report.report', compact('attendances', 'courses'));
-      
-    // }
+        return view('attendance.report', compact('attendances', 'courses'));
+
+    }
 
 
 

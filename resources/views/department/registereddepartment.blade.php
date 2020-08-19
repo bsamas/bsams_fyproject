@@ -20,7 +20,7 @@
 @endif
 
 <div class="container">
-<div class="card">
+
             {{-- ///== the add pop up button====// --}}
                 <div class="col-md-3 p-3">
                     <button class="btn btn-primary"  data-toggle="modal" data-target="#add">Add New</button>
@@ -123,7 +123,7 @@
 @endforeach
 @endif
   </table>
-          </div>
+
 
 
     <!-- Modal_for adding department -->
@@ -163,7 +163,7 @@
         var department = button.data('department')
         console.log(department)
         var modal = $(this)
-        
+
         modal.find('#edit_name').val(department['name'])
 
     })
@@ -174,7 +174,7 @@
         var button = $(event.relatedTarget)
         var department = button.data('department')
         console.log(department)
-      
+
     })
 </script>
 @endsection
