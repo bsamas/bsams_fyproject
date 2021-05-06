@@ -53,10 +53,10 @@ class ProgrammeController extends Controller
             }
             else{
 
+               
                 $programme=new programme;
                  $programme->name=$request->input('name');
                  $programme->department_id=$request->input('department_id');
-
 
                  $programme->save();
 
